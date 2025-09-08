@@ -105,7 +105,7 @@ export default function Header() {
             <Link href="/" data-testid="link-home">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="@assets/Gemini_Generated_Image_lyaeaxlyaeaxlyae_1757288812778.png"
+                  src="/attached_assets/Gemini_Generated_Image_lyaeaxlyaeaxlyae_1757288812778.png"
                   alt="IQ Foundation Logo"
                   className="h-10 w-10"
                 />

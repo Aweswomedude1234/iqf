@@ -28,15 +28,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <div className="max-w-4xl mx-auto">
-              <TypewriterText
-                text="Where curiosity meets innovation."
-                className="text-4xl md:text-6xl font-bold text-foreground block min-h-[1.2em]"
-                speed={100}
-              />
+              <div className="text-4xl md:text-6xl font-bold text-foreground">
+                <TypewriterText
+                  text="Where curiosity meets innovation. "
+                  className="inline"
+                  speed={100}
+                />
+                <span className="text-gray-500">Unlocking knowledge and creativity for learners everywhere.</span>
+              </div>
             </div>
-            <p className="text-4xl md:text-6xl font-bold text-foreground max-w-4xl mx-auto" data-testid="text-hero-subtitle">
-              Unlocking knowledge and creativity for learners everywhere.
-            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
               <Link href="/join-us">
                 <Button className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg" data-testid="button-join-programs">
