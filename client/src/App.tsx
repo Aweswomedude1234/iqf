@@ -18,6 +18,7 @@ import Chess from "@/pages/programs/Chess";
 import STEM from "@/pages/programs/STEM";
 import HighSchool from "@/pages/programs/HighSchool";
 import Coding from "@/pages/programs/Coding";
+import Volunteer from "@/pages/Volunteer";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/programs/coding" component={Coding} />
       <Route path="/events" component={Events} />
       <Route path="/join-us" component={JoinUs} />
+      <Route path="/volunteer" component={Volunteer} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

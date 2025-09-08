@@ -36,7 +36,7 @@ export default function Header() {
 
   const joinUsDropdownItems = [
     { href: '/join-us#join', label: 'Join Us' },
-    { href: '/join-us#volunteer', label: 'Volunteer' },
+    { href: '/volunteer', label: 'Volunteer' },
     { href: '/join-us#team', label: 'Join Our Team' },
     { href: '/join-us#sponsor', label: 'Sponsor' },
     { href: '/join-us#partner', label: 'Partner With Us' },
