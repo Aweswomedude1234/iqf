@@ -1,0 +1,118 @@
+Style & Theme
+Create a sleek, modern, vibrant website with a clean white background, standout black text and black buttons, and light orange accents throughout (highlights, and the top bar).
+
+
+Use a professional Google Font like Poppins (or a similar clean, modern sans-serif).
+
+
+Incorporate smooth animations and interactive effects — text that types out when first loaded, sections that fade or slide in from the side as you scroll, and hover effects on buttons and images. Animations should feel polished and professional, not flashy.
+
+
+Header / Navigation
+Top bar (light orange) with the logo text “IQ Foundation” aligned left.
+
+
+A navigation menu aligned right with links to: Home, About Us, Our Cause, Our Team, Missions, Events, Join Us, Volunteer, Sponsor, Partner.
+
+
+Include a search bar at the top right corner.
+
+
+Hero Section (top of homepage)
+Large headline text in black:
+ "Where curiosity meets innovation."
+
+
+Directly beneath it, in gray smaller text:
+ "Unlocking knowledge and creativity for learners everywhere."
+
+
+Add typewriter animation to the headline (so the black text types out when the page loads).
+
+
+Homepage Layout
+As you scroll:
+
+
+Upcoming Events preview – Show event cards with date, time, location, age group, description, and buttons for Sign Up and Volunteer.
+
+
+Photo highlights – A section with rotating images or a grid of past events.
+
+
+About Us (short) – A small description with a “Learn More” button that links to the About page.
+
+
+Join Us section – Brief text with a Join Us button.
+
+
+Include animations such as fade-in, slide-in, and text typing effects as sections scroll into view.
+
+
+About Us Page
+Full description of the organization:
+ "IQ Foundation is an organization educating youth and students on topics such as STEM, AI, computer-aided design, chess, finance, and more, through free programs, camps, workshops, and resources, giving them a hands-on and more engaging experience."
+
+
+Our Team Section
+Showcase Founder & President: Nithilan Murugesan with a placeholder image.
+
+
+Add space for future team members with names, titles, and photos.
+
+
+Join Us Page
+Options for: Join Us, Volunteer, Join Our Team, Sponsor, Partner With Us.
+
+
+Each option should have a button and a short description.
+
+
+Missions Page
+Placeholder/filler content for now, styled with animations when scrolling.
+
+
+Events Page
+List of Upcoming Events in card/grid style. Each card includes:
+
+
+Event Title
+
+
+Date & Time
+
+
+Location
+
+
+Age Group
+
+
+Description
+
+
+Buttons: “Sign Up” + “Volunteer”
+
+
+Footer
+Consistent across all pages. Include links to: About Us, Events, Join Us, Volunteer, Contact.
+
+
+Add social media icons (placeholders for now).
+
+
+Animations & Interactivity
+Key feature: Animations on scroll (fade-in, slide-in, typewriter effects).
+
+
+Hover animations on buttons.
+
+
+Smooth transitions between sections.
+
+
+Search bar should be interactive.
+
+
+Event signup/volunteer buttons should have hover effects and can link to placeholder forms.
+

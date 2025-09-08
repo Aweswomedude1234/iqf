@@ -1,0 +1,264 @@
+import { GraduationCap, HandHeart, Users, Heart, Handshake, Mail, Phone, MapPin } from 'lucide-react';
+import AnimatedSection from '@/components/AnimatedSection';
+import { Button } from '@/components/ui/button';
+
+export default function JoinUs() {
+  const joinOptions = [
+    {
+      icon: GraduationCap,
+      title: "Join Us",
+      description: "Participate in our programs and unlock your potential through hands-on learning experiences in STEM, AI, finance, and more.",
+      benefits: [
+        "Free access to all programs",
+        "Personalized mentorship",
+        "Hands-on learning experiences",
+        "Certificate of completion",
+        "Community of like-minded learners"
+      ],
+      action: "Enroll Now",
+      color: "bg-blue-50"
+    },
+    {
+      icon: HandHeart,
+      title: "Volunteer",
+      description: "Share your skills and help others learn while making a meaningful impact in your community.",
+      benefits: [
+        "Flexible time commitment",
+        "Training and support provided",
+        "Community service hours",
+        "Professional networking",
+        "Personal fulfillment"
+      ],
+      action: "Apply to Volunteer",
+      color: "bg-green-50"
+    },
+    {
+      icon: Users,
+      title: "Join Our Team",
+      description: "Build the future of education with us as a full-time or part-time team member.",
+      benefits: [
+        "Competitive compensation",
+        "Professional development",
+        "Meaningful work environment",
+        "Growth opportunities",
+        "Make a lasting impact"
+      ],
+      action: "View Openings",
+      color: "bg-purple-50"
+    },
+    {
+      icon: Heart,
+      title: "Sponsor",
+      description: "Support our mission through financial contribution and help us reach more students.",
+      benefits: [
+        "Tax-deductible donations",
+        "Recognition opportunities",
+        "Impact reports",
+        "Exclusive events access",
+        "Corporate partnership options"
+      ],
+      action: "Become a Sponsor",
+      color: "bg-red-50"
+    },
+    {
+      icon: Handshake,
+      title: "Partner With Us",
+      description: "Collaborate to expand our reach and impact through strategic partnerships.",
+      benefits: [
+        "Mutual benefit opportunities",
+        "Resource sharing",
+        "Joint program development",
+        "Brand association",
+        "Community impact"
+      ],
+      action: "Explore Partnership",
+      color: "bg-orange-50"
+    },
+    {
+      icon: MapPin,
+      title: "Make a Chapter",
+      description: "Bring IQ Foundation to your community by starting a local chapter in your area.",
+      benefits: [
+        "Complete setup support",
+        "Training and resources",
+        "Ongoing guidance",
+        "Access to curriculum",
+        "Community impact"
+      ],
+      action: "Start a Chapter",
+      color: "bg-teal-50"
+    }
+  ];
+
+  const handleJoinOption = (option: string) => {
+    // TODO: Implement specific join option functionality
+    alert(`${option} - Contact form would open here`);
+  };
+
+  return (
+    <div className="min-h-screen" data-testid="join-us-page">
+      {/* Hero Section */}
+      <section className="bg-background py-20" data-testid="join-us-hero-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center">
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-8" data-testid="text-join-us-hero-title">
+              Join Our Community
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-join-us-hero-subtitle">
+              Be part of a movement that's transforming education and empowering young minds to reach their full potential. 
+              Discover the many ways you can get involved and make a difference.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Join Options */}
+      <section className="bg-secondary py-20" data-testid="join-options-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-12">
+            {joinOptions.map((option, index) => {
+              const IconComponent = option.icon;
+              const isEven = index % 2 === 0;
+              
+              return (
+                <AnimatedSection 
+                  key={index} 
+                  animationType={isEven ? "slide-in-left" : "slide-in-right"}
+                >
+                  <div 
+                    id={option.title === 'Join Us' ? 'join' : 
+                        option.title === 'Volunteer' ? 'volunteer' :
+                        option.title === 'Join Our Team' ? 'team' :
+                        option.title === 'Sponsor' ? 'sponsor' :
+                        option.title === 'Partner With Us' ? 'partner' :
+                        option.title === 'Make a Chapter' ? 'chapter' : ''}
+                    className={`grid lg:grid-cols-2 gap-8 items-center ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}
+                    data-testid={`join-option-${index}`}
+                  >
+                    <div className={isEven ? 'order-1' : 'order-2'}>
+                      <div className="bg-background rounded-xl p-8 shadow-lg hover-lift">
+                        <div className="flex items-center mb-6">
+                          <div className="bg-accent bg-opacity-10 rounded-full w-16 h-16 flex items-center justify-center mr-4">
+                            <IconComponent className="h-8 w-8 text-accent" />
+                          </div>
+                          <h3 
+                            className="text-2xl font-bold text-foreground"
+                            data-testid={`text-option-title-${index}`}
+                          >
+                            {option.title}
+                          </h3>
+                        </div>
+                        
+                        <p 
+                          className="text-muted-foreground mb-6 leading-relaxed"
+                          data-testid={`text-option-description-${index}`}
+                        >
+                          {option.description}
+                        </p>
+
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-foreground mb-3">What You'll Get:</h4>
+                          <ul className="space-y-2">
+                            {option.benefits.map((benefit, benefitIndex) => (
+                              <li 
+                                key={benefitIndex} 
+                                className="flex items-center text-muted-foreground"
+                                data-testid={`text-benefit-${index}-${benefitIndex}`}
+                              >
+                                <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                                {benefit}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <Button 
+                          className="btn-primary w-full py-3 rounded-lg font-semibold"
+                          onClick={() => handleJoinOption(option.title)}
+                          data-testid={`button-${option.title.toLowerCase().replace(/\s+/g, '-')}`}
+                        >
+                          {option.action}
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className={isEven ? 'order-2' : 'order-1'}>
+                      <img
+                        src={
+                          index === 0 
+                            ? "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                            : index === 1
+                            ? "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                            : index === 2
+                            ? "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                            : index === 3
+                            ? "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                            : "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                        }
+                        alt={`${option.title} illustration`}
+                        className="rounded-xl shadow-lg w-full h-auto"
+                        data-testid={`img-option-${index}`}
+                      />
+                    </div>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Information */}
+      <section className="bg-accent py-20" data-testid="contact-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center">
+            <h2 className="text-4xl font-bold text-foreground mb-6" data-testid="text-contact-title">
+              Ready to Get Started?
+            </h2>
+            <p className="text-xl text-foreground mb-12 max-w-3xl mx-auto" data-testid="text-contact-subtitle">
+              Have questions or want to learn more? We're here to help! Reach out to us through any of the channels below.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-background rounded-xl p-6 hover-lift" data-testid="contact-email-card">
+                <Mail className="h-8 w-8 text-accent mx-auto mb-4" />
+                <h3 className="font-bold text-foreground mb-2">Email Us</h3>
+                <p className="text-muted-foreground mb-4">Get in touch via email</p>
+                <a 
+                  href="mailto:info@iqfoundation.org" 
+                  className="text-accent font-medium hover:underline"
+                  data-testid="link-contact-email"
+                >
+                  info@iqfoundation.org
+                </a>
+              </div>
+
+              <div className="bg-background rounded-xl p-6 hover-lift" data-testid="contact-phone-card">
+                <Phone className="h-8 w-8 text-accent mx-auto mb-4" />
+                <h3 className="font-bold text-foreground mb-2">Call Us</h3>
+                <p className="text-muted-foreground mb-4">Speak with our team</p>
+                <a 
+                  href="tel:+15551234567" 
+                  className="text-accent font-medium hover:underline"
+                  data-testid="link-contact-phone"
+                >
+                  (555) 123-4567
+                </a>
+              </div>
+
+              <div className="bg-background rounded-xl p-6 hover-lift" data-testid="contact-address-card">
+                <MapPin className="h-8 w-8 text-accent mx-auto mb-4" />
+                <h3 className="font-bold text-foreground mb-2">Visit Us</h3>
+                <p className="text-muted-foreground mb-4">Our physical location</p>
+                <p className="text-accent font-medium" data-testid="text-contact-address">
+                  123 Education St<br />
+                  Learning City, LC 12345
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+    </div>
+  );
+}

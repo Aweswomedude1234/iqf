@@ -1,0 +1,764 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Foundation - Where curiosity meets innovation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Poppins", "sans-serif"],
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --background: hsl(0 0% 100%);
+            --foreground: hsl(0 0% 0%);
+            --card: hsl(210 40% 98%);
+            --card-foreground: hsl(0 0% 0%);
+            --primary: hsl(25 100% 63%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(210 40% 96%);
+            --secondary-foreground: hsl(0 0% 0%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215 16% 47%);
+            --accent: hsl(25 100% 63%);
+            --accent-foreground: hsl(0 0% 0%);
+            --border: hsl(214 32% 91%);
+            --input: hsl(214 32% 91%);
+            --ring: hsl(25 100% 63%);
+            --radius: 0.5rem;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid hsl(25 100% 63%);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: hsl(25 100% 63%); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+        }
+
+        .btn-primary {
+            background: hsl(0 0% 0%);
+            color: hsl(0 0% 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: hsl(0 0% 15%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        .btn-accent {
+            background: hsl(25 100% 63%);
+            color: hsl(0 0% 0%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-accent:hover {
+            background: hsl(25 100% 58%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(255 140 66 / 0.3);
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: hsl(25 100% 63%);
+        }
+
+        .search-input {
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 3px hsl(25 100% 63% / 0.1);
+            border-color: hsl(25 100% 63%);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+
+    <!-- @COMPONENT: Header [navigation with logo, menu items, and search] -->
+    <header class="bg-accent shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-foreground">IQ Foundation</h1>
+                </div>
+
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-foreground font-medium">Home</a>
+                    <a href="#about" class="nav-link text-foreground font-medium">About Us</a>
+                    <a href="#cause" class="nav-link text-foreground font-medium">Our Cause</a>
+                    <a href="#team" class="nav-link text-foreground font-medium">Our Team</a>
+                    <a href="#missions" class="nav-link text-foreground font-medium">Missions</a>
+                    <a href="#events" class="nav-link text-foreground font-medium">Events</a>
+                    <a href="#join" class="nav-link text-foreground font-medium">Join Us</a>
+                    <a href="#volunteer" class="nav-link text-foreground font-medium">Volunteer</a>
+                    <a href="#sponsor" class="nav-link text-foreground font-medium">Sponsor</a>
+                    <a href="#partner" class="nav-link text-foreground font-medium">Partner</a>
+                </nav>
+
+                <!-- Search Bar -->
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        placeholder="Search..." 
+                        class="search-input w-64 pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none bg-background"
+                        data-implementation="Implement search functionality"
+                    >
+                    <i class="fas fa-search absolute left-3 top-3 text-muted-foreground"></i>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-foreground hover:text-accent-foreground">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: HeroSection [main landing area with typewriter animation] -->
+    <section id="home" class="bg-background py-20 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <h1 class="text-5xl md:text-7xl font-bold text-foreground typewriter">
+                    Where curiosity meets innovation.
+                </h1>
+                <p class="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+                    Unlocking knowledge and creativity for learners everywhere.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+                    <button class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg" data-event="click:joinProgram">
+                        Join Our Programs
+                    </button>
+                    <button class="btn-accent px-8 py-4 rounded-lg font-semibold text-lg" data-event="click:learnMore">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- @COMPONENT: UpcomingEvents [preview of upcoming events] -->
+    <section id="events-preview" class="bg-secondary py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Upcoming Events</h2>
+                <p class="text-xl text-muted-foreground">Join us for exciting learning opportunities</p>
+            </div>
+
+            <!-- @MAP: upcomingEvents.map(event => ( -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift fade-in" data-mock="true">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold">STEM Workshop</span>
+                            <span class="text-muted-foreground text-sm">Ages 12-16</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-2" data-bind="event.title">AI & Machine Learning Basics</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span data-bind="event.date">December 15, 2024</span>
+                            </div>
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-clock mr-2"></i>
+                                <span data-bind="event.time">2:00 PM - 4:00 PM</span>
+                            </div>
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span data-bind="event.location">Virtual Event</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground mb-6" data-bind="event.description">Learn the fundamentals of artificial intelligence and machine learning through hands-on activities and real-world examples.</p>
+                        <div class="flex gap-3">
+                            <button class="btn-primary px-4 py-2 rounded-lg font-medium flex-1" data-event="click:signUpEvent">
+                                Sign Up
+                            </button>
+                            <button class="btn-accent px-4 py-2 rounded-lg font-medium flex-1" data-event="click:volunteerEvent">
+                                Volunteer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift fade-in" data-mock="true">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold">Chess Club</span>
+                            <span class="text-muted-foreground text-sm">Ages 8-14</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-2">Strategic Thinking Tournament</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span>December 20, 2024</span>
+                            </div>
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-clock mr-2"></i>
+                                <span>10:00 AM - 3:00 PM</span>
+                            </div>
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Community Center</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground mb-6">Develop critical thinking skills through chess. Open to all skill levels with coaching provided.</p>
+                        <div class="flex gap-3">
+                            <button class="btn-primary px-4 py-2 rounded-lg font-medium flex-1">
+                                Sign Up
+                            </button>
+                            <button class="btn-accent px-4 py-2 rounded-lg font-medium flex-1">
+                                Volunteer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift fade-in" data-mock="true">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold">Finance</span>
+                            <span class="text-muted-foreground text-sm">Ages 16-18</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-2">Financial Literacy Workshop</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span>January 5, 2025</span>
+                            </div>
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-clock mr-2"></i>
+                                <span>1:00 PM - 5:00 PM</span>
+                            </div>
+                            <div class="flex items-center text-muted-foreground">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>IQ Foundation HQ</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground mb-6">Learn essential financial skills including budgeting, investing, and entrepreneurship fundamentals.</p>
+                        <div class="flex gap-3">
+                            <button class="btn-primary px-4 py-2 rounded-lg font-medium flex-1">
+                                Sign Up
+                            </button>
+                            <button class="btn-accent px-4 py-2 rounded-lg font-medium flex-1">
+                                Volunteer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+
+            <div class="text-center mt-12">
+                <button class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg" data-event="click:viewAllEvents">
+                    View All Events
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: UpcomingEvents -->
+
+    <!-- @COMPONENT: PhotoHighlights [showcase of past events] -->
+    <section class="bg-background py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Event Highlights</h2>
+                <p class="text-xl text-muted-foreground">Moments from our inspiring educational programs</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Students working on computers in a bright classroom setting -->
+                <div class="hover-lift fade-in">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Students working on computers" 
+                         class="rounded-xl shadow-lg w-full h-64 object-cover" />
+                </div>
+
+                <!-- Young people engaged in a chess competition -->
+                <div class="hover-lift fade-in">
+                    <img src="https://images.unsplash.com/photo-1560438718-eb61ede255eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Chess competition" 
+                         class="rounded-xl shadow-lg w-full h-64 object-cover" />
+                </div>
+
+                <!-- Science experiment with colorful liquids and equipment -->
+                <div class="hover-lift fade-in">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Science experiment" 
+                         class="rounded-xl shadow-lg w-full h-64 object-cover" />
+                </div>
+
+                <!-- Group of diverse students collaborating on a project -->
+                <div class="hover-lift fade-in">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Students collaborating" 
+                         class="rounded-xl shadow-lg w-full h-64 object-cover" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: PhotoHighlights -->
+
+    <!-- @COMPONENT: AboutUsPreview [brief overview with call-to-action] -->
+    <section id="about" class="bg-secondary py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <h2 class="text-4xl font-bold text-foreground mb-6">About IQ Foundation</h2>
+                    <p class="text-lg text-muted-foreground mb-6 leading-relaxed">
+                        IQ Foundation is an organization educating youth and students on topics such as STEM, AI, computer-aided design, chess, finance, and more, through free programs, camps, workshops, and resources, giving them a hands-on and more engaging experience.
+                    </p>
+                    <p class="text-lg text-muted-foreground mb-8 leading-relaxed">
+                        We believe that every young mind deserves access to quality education and innovative learning opportunities that prepare them for the future.
+                    </p>
+                    <button class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg" data-event="click:learnMoreAbout">
+                        Learn More About Us
+                    </button>
+                </div>
+                <div class="slide-in-right">
+                    <!-- Students in a modern learning environment with technology -->
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800" 
+                         alt="Students in modern learning environment" 
+                         class="rounded-xl shadow-2xl w-full h-auto" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutUsPreview -->
+
+    <!-- @COMPONENT: OurTeam [founder and team member showcase] -->
+    <section id="team" class="bg-background py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Our Team</h2>
+                <p class="text-xl text-muted-foreground">Meet the passionate individuals driving our mission</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Founder Profile -->
+                <div class="text-center fade-in">
+                    <div class="relative mb-6">
+                        <!-- Professional headshot of a young educator or entrepreneur -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400" 
+                             alt="Nithilan Murugesan - Founder & President" 
+                             class="w-48 h-48 object-cover rounded-full mx-auto shadow-lg" />
+                        <div class="absolute -bottom-2 -right-2 bg-accent text-accent-foreground p-2 rounded-full">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-2" data-bind="founder.name">Nithilan Murugesan</h3>
+                    <p class="text-accent font-semibold mb-3">Founder & President</p>
+                    <p class="text-muted-foreground text-sm leading-relaxed">
+                        Passionate about empowering youth through innovative educational programs and technology-driven learning experiences.
+                    </p>
+                </div>
+
+                <!-- Future Team Member Placeholder 1 -->
+                <div class="text-center fade-in" data-mock="true">
+                    <div class="relative mb-6">
+                        <div class="w-48 h-48 bg-muted rounded-full mx-auto shadow-lg flex items-center justify-center">
+                            <i class="fas fa-user-plus text-4xl text-muted-foreground"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-2">Join Our Team</h3>
+                    <p class="text-muted-foreground font-semibold mb-3">Future Team Member</p>
+                    <p class="text-muted-foreground text-sm leading-relaxed">
+                        We're always looking for passionate educators and volunteers to join our mission.
+                    </p>
+                </div>
+
+                <!-- Future Team Member Placeholder 2 -->
+                <div class="text-center fade-in" data-mock="true">
+                    <div class="relative mb-6">
+                        <div class="w-48 h-48 bg-muted rounded-full mx-auto shadow-lg flex items-center justify-center">
+                            <i class="fas fa-user-plus text-4xl text-muted-foreground"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-2">Join Our Team</h3>
+                    <p class="text-muted-foreground font-semibold mb-3">Future Team Member</p>
+                    <p class="text-muted-foreground text-sm leading-relaxed">
+                        Be part of something bigger and help shape the future of education.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: OurTeam -->
+
+    <!-- @COMPONENT: JoinUsSection [call-to-action for participation] -->
+    <section id="join" class="bg-accent py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl font-bold text-foreground mb-6">Join Our Community</h2>
+                    <p class="text-xl text-foreground mb-8 max-w-3xl mx-auto">
+                        Be part of a movement that's transforming education and empowering young minds to reach their full potential.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mt-12">
+                        <div class="bg-background rounded-xl p-6 hover-lift">
+                            <div class="text-accent text-3xl mb-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="font-bold text-foreground mb-2">Join Us</h3>
+                            <p class="text-muted-foreground text-sm mb-4">Participate in our programs and unlock your potential</p>
+                            <button class="btn-primary w-full py-2 rounded-lg font-medium" data-event="click:joinPrograms">
+                                Get Started
+                            </button>
+                        </div>
+
+                        <div class="bg-background rounded-xl p-6 hover-lift">
+                            <div class="text-accent text-3xl mb-4">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h3 class="font-bold text-foreground mb-2">Volunteer</h3>
+                            <p class="text-muted-foreground text-sm mb-4">Share your skills and help others learn</p>
+                            <button class="btn-primary w-full py-2 rounded-lg font-medium" data-event="click:volunteer">
+                                Volunteer
+                            </button>
+                        </div>
+
+                        <div class="bg-background rounded-xl p-6 hover-lift">
+                            <div class="text-accent text-3xl mb-4">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="font-bold text-foreground mb-2">Join Our Team</h3>
+                            <p class="text-muted-foreground text-sm mb-4">Build the future of education with us</p>
+                            <button class="btn-primary w-full py-2 rounded-lg font-medium" data-event="click:joinTeam">
+                                Apply Now
+                            </button>
+                        </div>
+
+                        <div class="bg-background rounded-xl p-6 hover-lift">
+                            <div class="text-accent text-3xl mb-4">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3 class="font-bold text-foreground mb-2">Sponsor</h3>
+                            <p class="text-muted-foreground text-sm mb-4">Support our mission through financial contribution</p>
+                            <button class="btn-primary w-full py-2 rounded-lg font-medium" data-event="click:sponsor">
+                                Sponsor Us
+                            </button>
+                        </div>
+
+                        <div class="bg-background rounded-xl p-6 hover-lift">
+                            <div class="text-accent text-3xl mb-4">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 class="font-bold text-foreground mb-2">Partner With Us</h3>
+                            <p class="text-muted-foreground text-sm mb-4">Collaborate to expand our reach and impact</p>
+                            <button class="btn-primary w-full py-2 rounded-lg font-medium" data-event="click:partner">
+                                Partner
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: JoinUsSection -->
+
+    <!-- @COMPONENT: Missions [organizational goals and initiatives] -->
+    <section id="missions" class="bg-background py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Our Missions</h2>
+                <p class="text-xl text-muted-foreground">Transforming education through innovation and accessibility</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center fade-in" data-mock="true">
+                    <div class="bg-accent bg-opacity-10 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-brain text-accent text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-4">Foster Innovation</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        Encourage creative thinking and problem-solving through hands-on STEM programs that inspire the next generation of innovators.
+                    </p>
+                </div>
+
+                <div class="text-center fade-in" data-mock="true">
+                    <div class="bg-accent bg-opacity-10 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-globe text-accent text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-4">Bridge Gaps</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        Make quality education accessible to all youth regardless of their background or economic circumstances.
+                    </p>
+                </div>
+
+                <div class="text-center fade-in" data-mock="true">
+                    <div class="bg-accent bg-opacity-10 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-rocket text-accent text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-4">Future-Ready Skills</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        Equip students with cutting-edge skills in AI, programming, design, and critical thinking for tomorrow's challenges.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Missions -->
+
+    <!-- @COMPONENT: Footer [comprehensive site navigation and social links] -->
+    <footer class="bg-foreground text-background py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Organization Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-accent">IQ Foundation</h3>
+                    <p class="text-muted mb-6">
+                        Empowering young minds through innovative education and hands-on learning experiences.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-muted hover:text-accent transition-colors" data-implementation="Add social media links">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted hover:text-accent transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted hover:text-accent transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted hover:text-accent transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted hover:text-accent transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-muted hover:text-accent transition-colors">About Us</a></li>
+                        <li><a href="#events" class="text-muted hover:text-accent transition-colors">Events</a></li>
+                        <li><a href="#missions" class="text-muted hover:text-accent transition-colors">Our Missions</a></li>
+                        <li><a href="#team" class="text-muted hover:text-accent transition-colors">Our Team</a></li>
+                    </ul>
+                </div>
+
+                <!-- Get Involved -->
+                <div>
+                    <h4 class="font-semibold mb-4">Get Involved</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#join" class="text-muted hover:text-accent transition-colors">Join Us</a></li>
+                        <li><a href="#volunteer" class="text-muted hover:text-accent transition-colors">Volunteer</a></li>
+                        <li><a href="#sponsor" class="text-muted hover:text-accent transition-colors">Sponsor</a></li>
+                        <li><a href="#partner" class="text-muted hover:text-accent transition-colors">Partner</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <div class="space-y-2 text-muted">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span data-mock="true">info@iqfoundation.org</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span data-mock="true">(555) 123-4567</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span data-mock="true">123 Education St, Learning City</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-muted">&copy; 2024 IQ Foundation. All rights reserved. Empowering minds, building futures.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // TODO: Implement business logic, API calls, or state management
+            
+            // Scroll Animation Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Search functionality placeholder
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    // TODO: Implement search functionality
+                    console.log('Search query:', e.target.value);
+                });
+            }
+
+            // Button click handlers
+            document.querySelectorAll('[data-event]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const event = this.dataset.event;
+                    // TODO: Implement specific event handlers
+                    console.log('Event triggered:', event);
+                    
+                    // Placeholder for form submissions and redirects
+                    if (event.includes('signUp') || event.includes('volunteer')) {
+                        // TODO: Open registration/volunteer form modal
+                        alert('Registration form would open here');
+                    } else if (event.includes('join') || event.includes('sponsor') || event.includes('partner')) {
+                        // TODO: Navigate to specific page or open contact form
+                        alert('Contact form or information page would open here');
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.md\\:hidden button');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    // TODO: Implement mobile menu toggle
+                    console.log('Mobile menu toggle');
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
