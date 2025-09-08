@@ -15,9 +15,9 @@ export default function TypewriterText({
 }: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState('');
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
-  const [isFirstComplete, setIsFirstComplete] = useState(false);
+  const [isInitialTypingComplete, setIsInitialTypingComplete] = useState(false);
   const [currentCyclingWord, setCurrentCyclingWord] = useState('');
+  const [isTypingWord, setIsTypingWord] = useState(true);
 
   useEffect(() => {
     if (cyclingWords.length === 0) {
@@ -28,74 +28,82 @@ export default function TypewriterText({
         index++;
         if (index > text.length) {
           clearInterval(timer);
-          setIsFirstComplete(true);
+          setIsInitialTypingComplete(true);
         }
       }, speed);
       return () => clearInterval(timer);
     }
 
-    // Enhanced behavior with cycling words
-    let index = 0;
-    let currentWord = cyclingWords[currentWordIndex];
-    const fullText = text + currentWord;
-    
-    if (!isFirstComplete) {
-      // First time: type the complete sentence
+    if (!isInitialTypingComplete) {
+      // First time: type the complete sentence including first word
+      let index = 0;
+      const firstWord = cyclingWords[0];
+      const fullText = text + firstWord;
+      
       const timer = setInterval(() => {
         setDisplayText(fullText.slice(0, index));
         index++;
         if (index > fullText.length) {
           clearInterval(timer);
-          setIsFirstComplete(true);
-          setCurrentCyclingWord(currentWord);
+          setIsInitialTypingComplete(true);
+          setCurrentCyclingWord(firstWord);
+          // Start cycling after a pause, starting with the second word
           setTimeout(() => {
-            setIsTyping(false);
-          }, 2000); // Pause before starting cycle
+            setCurrentWordIndex(1);
+            setIsTypingWord(false); // Start by untyping the first word
+          }, 2500);
         }
       }, speed);
       return () => clearInterval(timer);
     } else {
-      // Cycling behavior: only change the last word
-      if (isTyping) {
+      // Cycling behavior: change only the last word
+      const currentWord = cyclingWords[currentWordIndex];
+      
+      if (isTypingWord) {
         // Typing the new word
+        let index = 0;
         const timer = setInterval(() => {
           setCurrentCyclingWord(currentWord.slice(0, index));
           index++;
           if (index > currentWord.length) {
             clearInterval(timer);
-            setTimeout(() => setIsTyping(false), 2000); // Pause before untyping
+            // Pause, then start untyping
+            setTimeout(() => {
+              setIsTypingWord(false);
+            }, 2500);
           }
         }, speed);
         return () => clearInterval(timer);
       } else {
         // Untyping the current word
-        index = currentCyclingWord.length;
+        let index = currentCyclingWord.length;
         const timer = setInterval(() => {
           setCurrentCyclingWord(currentWord.slice(0, index));
           index--;
           if (index < 0) {
             clearInterval(timer);
+            // Move to next word and start typing
             setCurrentWordIndex((prev) => (prev + 1) % cyclingWords.length);
-            setIsTyping(true);
+            setIsTypingWord(true);
           }
-        }, speed / 2); // Untype faster
+        }, speed / 2);
         return () => clearInterval(timer);
       }
     }
-  }, [text, cyclingWords, currentWordIndex, isTyping, isFirstComplete, speed]);
+  }, [text, cyclingWords, currentWordIndex, isInitialTypingComplete, isTypingWord, speed]);
 
   if (cyclingWords.length === 0) {
     return (
       <span className={className}>
         {displayText}
-        {!isFirstComplete && <span className="animate-pulse text-green-500">|</span>}
+        {!isInitialTypingComplete && <span className="animate-pulse text-green-500">|</span>}
       </span>
     );
   }
 
   return (
     <span className={className}>
-      {isFirstComplete ? (
+      {isInitialTypingComplete ? (
         <>
           {text}
           <span className="text-green-500">{currentCyclingWord}</span>

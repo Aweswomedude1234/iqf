@@ -201,14 +201,38 @@
 
   /* Navigation dropdown styles */
   .navigation-menu-content {
-    background: white;
-    border: 1px solid hsl(120 25% 85%);
-    border-radius: 8px;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    z-index: 50;
+    background: white !important;
+    border: 1px solid hsl(120 25% 85%) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1) !important;
+    z-index: 50 !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    min-width: 200px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   .navigation-menu-item:hover {
-    background: hsl(120 20% 95%);
+    background: hsl(120 20% 95%) !important;
+  }
+
+  /* Ensure NavigationMenu dropdowns are visible */
+  [data-radix-navigation-menu-content] {
+    background: white !important;
+    border: 1px solid hsl(120 25% 85%) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1) !important;
+    z-index: 50 !important;
+  }
+
+  /* Make sure the navigation menu viewport is visible */
+  [data-radix-navigation-menu-viewport] {
+    position: relative !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1) !important;
+    z-index: 50 !important;
   }
 }

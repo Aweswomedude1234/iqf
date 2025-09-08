@@ -117,81 +117,74 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList className="flex space-x-6 relative">
-              {/* Home */}
-              <NavigationMenuItem>
-                <Link href="/">
-                  <NavigationMenuLink className="nav-link text-foreground font-medium px-3 py-2">
-                    Home
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+          <nav className="hidden md:flex space-x-6">
+            {/* Home */}
+            <Link href="/" className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors">
+              Home
+            </Link>
 
-              {/* About Us Dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="nav-link text-foreground font-medium hover:text-green-600 transition-colors">
-                  About Us
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="navigation-menu-content">
-                  <div className="w-48 p-2">
-                    {aboutDropdownItems.map((item) => (
-                      <Link key={item.href} href={item.href}>
-                        <NavigationMenuLink className="navigation-menu-item block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
-                          {item.label}
-                        </NavigationMenuLink>
-                      </Link>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+            {/* About Us Dropdown */}
+            <div className="relative group">
+              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors flex items-center">
+                About Us
+                <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-green-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="p-2">
+                  {aboutDropdownItems.map((item) => (
+                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-              {/* Our Programs Dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="nav-link text-foreground font-medium hover:text-green-600 transition-colors">
-                  Our Programs
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="navigation-menu-content">
-                  <div className="w-48 p-2">
-                    {programsDropdownItems.map((item) => (
-                      <Link key={item.href} href={item.href}>
-                        <NavigationMenuLink className="navigation-menu-item block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
-                          {item.label}
-                        </NavigationMenuLink>
-                      </Link>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+            {/* Our Programs Dropdown */}
+            <div className="relative group">
+              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors flex items-center">
+                Our Programs
+                <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-green-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="p-2">
+                  {programsDropdownItems.map((item) => (
+                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-              {/* Events */}
-              <NavigationMenuItem>
-                <Link href="/events">
-                  <NavigationMenuLink className="nav-link text-foreground font-medium px-3 py-2">
-                    Events
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+            {/* Events */}
+            <Link href="/events" className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors">
+              Events
+            </Link>
 
-              {/* Join Us Dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="nav-link text-foreground font-medium hover:text-green-600 transition-colors">
-                  Join Us
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="navigation-menu-content">
-                  <div className="w-48 p-2">
-                    {joinUsDropdownItems.map((item) => (
-                      <Link key={item.href} href={item.href}>
-                        <NavigationMenuLink className="navigation-menu-item block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
-                          {item.label}
-                        </NavigationMenuLink>
-                      </Link>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+            {/* Join Us Dropdown */}
+            <div className="relative group">
+              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors flex items-center">
+                Join Us
+                <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-green-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="p-2">
+                  {joinUsDropdownItems.map((item) => (
+                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </nav>
 
           {/* Search Bar */}
           <div className="relative hidden md:block">
