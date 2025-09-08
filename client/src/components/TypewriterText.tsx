@@ -12,7 +12,7 @@ export default function TypewriterText({
   speed = 100 
 }: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     let index = 0;
@@ -21,11 +21,7 @@ export default function TypewriterText({
       index++;
       if (index > text.length) {
         clearInterval(timer);
-        // Blinking cursor
-        const cursorTimer = setInterval(() => {
-          setShowCursor(prev => !prev);
-        }, 750);
-        return () => clearInterval(cursorTimer);
+        setIsComplete(true);
       }
     }, speed);
 
@@ -33,8 +29,9 @@ export default function TypewriterText({
   }, [text, speed]);
 
   return (
-    <span className={`${className} ${showCursor ? 'typewriter' : ''}`}>
+    <span className={className}>
       {displayText}
+      {!isComplete && <span className="animate-pulse">|</span>}
     </span>
   );
 }
