@@ -105,9 +105,9 @@ export default function Header() {
             <Link href="/" data-testid="link-home">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/attached_assets/Gemini_Generated_Image_lyaeaxlyaeaxlyae_1757288812778.png"
+                  src="/attached_assets/Gemini_Generated_Image_lyaeaxlyaeaxlyae_1757373997698.png"
                   alt="IQ Foundation Logo"
-                  className="h-10 w-10"
+                  className="h-10 w-10 rounded-full"
                 />
                 <h1 className="text-xl font-bold text-foreground hover:text-accent transition-colors">
                   IQ Foundation
@@ -118,7 +118,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList className="flex space-x-6">
+            <NavigationMenuList className="flex space-x-6 relative">
               {/* Home */}
               <NavigationMenuItem>
                 <Link href="/">
@@ -130,14 +130,14 @@ export default function Header() {
 
               {/* About Us Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="nav-link text-foreground font-medium">
+                <NavigationMenuTrigger className="nav-link text-foreground font-medium hover:text-green-600 transition-colors">
                   About Us
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="navigation-menu-content">
                   <div className="w-48 p-2">
                     {aboutDropdownItems.map((item) => (
                       <Link key={item.href} href={item.href}>
-                        <NavigationMenuLink className="block px-3 py-2 text-sm text-foreground hover:bg-secondary rounded-md">
+                        <NavigationMenuLink className="navigation-menu-item block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
                           {item.label}
                         </NavigationMenuLink>
                       </Link>
@@ -148,14 +148,14 @@ export default function Header() {
 
               {/* Our Programs Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="nav-link text-foreground font-medium">
+                <NavigationMenuTrigger className="nav-link text-foreground font-medium hover:text-green-600 transition-colors">
                   Our Programs
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="navigation-menu-content">
                   <div className="w-48 p-2">
                     {programsDropdownItems.map((item) => (
                       <Link key={item.href} href={item.href}>
-                        <NavigationMenuLink className="block px-3 py-2 text-sm text-foreground hover:bg-secondary rounded-md">
+                        <NavigationMenuLink className="navigation-menu-item block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
                           {item.label}
                         </NavigationMenuLink>
                       </Link>
@@ -175,17 +175,17 @@ export default function Header() {
 
               {/* Join Us Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="nav-link text-foreground font-medium">
+                <NavigationMenuTrigger className="nav-link text-foreground font-medium hover:text-green-600 transition-colors">
                   Join Us
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="navigation-menu-content">
                   <div className="w-48 p-2">
                     {joinUsDropdownItems.map((item) => (
-                      <a key={item.href} href={item.href}>
-                        <NavigationMenuLink className="block px-3 py-2 text-sm text-foreground hover:bg-secondary rounded-md">
+                      <Link key={item.href} href={item.href}>
+                        <NavigationMenuLink className="navigation-menu-item block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
                           {item.label}
                         </NavigationMenuLink>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </NavigationMenuContent>

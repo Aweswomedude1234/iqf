@@ -6,23 +6,23 @@
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(0 0% 0%);
-  --card: hsl(210 40% 98%);
+  --card: hsl(120 10% 97%);
   --card-foreground: hsl(0 0% 0%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(0 0% 0%);
-  --primary: hsl(0 0% 0%);
+  --primary: hsl(160 100% 25%);
   --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(210 40% 96%);
+  --secondary: hsl(120 20% 92%);
   --secondary-foreground: hsl(0 0% 0%);
-  --muted: hsl(210 40% 96%);
-  --muted-foreground: hsl(215 16% 47%);
-  --accent: hsl(210 25% 25%);
+  --muted: hsl(120 15% 90%);
+  --muted-foreground: hsl(120 10% 45%);
+  --accent: hsl(160 80% 30%);
   --accent-foreground: hsl(0 0% 100%);
   --destructive: hsl(356.3033 90.5579% 54.3137%);
   --destructive-foreground: hsl(0 0% 100%);
-  --border: hsl(214 32% 91%);
-  --input: hsl(214 32% 91%);
-  --ring: hsl(210 25% 25%);
+  --border: hsl(120 25% 85%);
+  --input: hsl(120 25% 85%);
+  --ring: hsl(160 80% 30%);
   --chart-1: hsl(25 100% 63%);
   --chart-2: hsl(159.7826 100% 36.0784%);
   --chart-3: hsl(42.0290 92.8251% 56.2745%);
@@ -159,27 +159,27 @@
   }
 
   .btn-primary {
-    background: hsl(0 0% 0%);
+    background: hsl(160 80% 25%);
     color: hsl(0 0% 100%);
     transition: all 0.3s ease;
   }
 
   .btn-primary:hover {
-    background: hsl(0 0% 15%);
+    background: hsl(160 80% 20%);
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    box-shadow: 0 10px 15px -3px rgb(0 100 60 / 0.3);
   }
 
   .btn-accent {
-    background: hsl(210 25% 25%);
+    background: hsl(120 60% 40%);
     color: hsl(0 0% 100%);
     transition: all 0.3s ease;
   }
 
   .btn-accent:hover {
-    background: hsl(210 25% 35%);
+    background: hsl(120 60% 35%);
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgb(64 75 85 / 0.3);
+    box-shadow: 0 10px 15px -3px rgb(60 150 60 / 0.3);
   }
 
   .nav-link {
@@ -187,7 +187,7 @@
   }
 
   .nav-link:hover {
-    color: hsl(210 25% 25%);
+    color: hsl(160 80% 30%);
   }
 
   .search-input {
@@ -195,7 +195,20 @@
   }
 
   .search-input:focus {
-    box-shadow: 0 0 0 3px hsl(210 25% 25% / 0.1);
-    border-color: hsl(210 25% 25%);
+    box-shadow: 0 0 0 3px hsl(160 80% 30% / 0.1);
+    border-color: hsl(160 80% 30%);
+  }
+
+  /* Navigation dropdown styles */
+  .navigation-menu-content {
+    background: white;
+    border: 1px solid hsl(120 25% 85%);
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    z-index: 50;
+  }
+
+  .navigation-menu-item:hover {
+    background: hsl(120 20% 95%);
   }
 }
