@@ -11,108 +11,97 @@ export default function TypewriterText({
   text, 
   cyclingWords = [],
   className = '', 
-  speed = 120 
+  speed = 100 
 }: TypewriterTextProps) {
-  const [displayText, setDisplayText] = useState('');
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [isInitialComplete, setIsInitialComplete] = useState(false);
-  const [currentCyclingWord, setCurrentCyclingWord] = useState('');
-  const [isUntyping, setIsUntyping] = useState(false);
+  const [baseText, setBaseText] = useState('');
+  const [cyclingWord, setCyclingWord] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [stage, setStage] = useState<'typing-base' | 'typing-word' | 'pausing' | 'untyping-word'>('typing-base');
 
   useEffect(() => {
     if (cyclingWords.length === 0) {
-      // Simple typing without cycling
-      let index = 0;
+      // Simple mode: just type the text
+      let i = 0;
       const timer = setInterval(() => {
-        setDisplayText(text.slice(0, index));
-        index++;
-        if (index > text.length) {
+        if (i <= text.length) {
+          setBaseText(text.slice(0, i));
+          i++;
+        } else {
           clearInterval(timer);
         }
       }, speed);
       return () => clearInterval(timer);
     }
 
-    if (!isInitialComplete) {
-      // Type the full sentence once with the first word
-      let index = 0;
-      const fullText = text + cyclingWords[0];
+    // Complex mode with cycling words
+    if (stage === 'typing-base') {
+      // First, type the base text
+      let i = 0;
+      const timer = setInterval(() => {
+        if (i <= text.length) {
+          setBaseText(text.slice(0, i));
+          i++;
+        } else {
+          clearInterval(timer);
+          setStage('typing-word');
+        }
+      }, speed);
+      return () => clearInterval(timer);
       
+    } else if (stage === 'typing-word') {
+      // Type the current cycling word
+      const currentWord = cyclingWords[wordIndex];
+      let i = 0;
       const timer = setInterval(() => {
-        setDisplayText(fullText.slice(0, index));
-        index++;
-        if (index > fullText.length) {
+        if (i <= currentWord.length) {
+          setCyclingWord(currentWord.slice(0, i));
+          i++;
+        } else {
           clearInterval(timer);
-          setIsInitialComplete(true);
-          setCurrentCyclingWord(cyclingWords[0]);
-          
-          // Start the cycling after a pause
-          setTimeout(() => {
-            setIsUntyping(true);
-          }, 2500);
+          setStage('pausing');
         }
       }, speed);
       return () => clearInterval(timer);
-    }
-
-    // Handle word cycling after initial typing is complete
-    if (isUntyping) {
+      
+    } else if (stage === 'pausing') {
+      // Pause before untyping
+      const timer = setTimeout(() => {
+        setStage('untyping-word');
+      }, 2000);
+      return () => clearTimeout(timer);
+      
+    } else if (stage === 'untyping-word') {
       // Untype the current word
-      let length = currentCyclingWord.length;
+      let currentLength = cyclingWord.length;
       const timer = setInterval(() => {
-        setCurrentCyclingWord(currentCyclingWord.slice(0, length));
-        length--;
-        if (length < 0) {
+        if (currentLength >= 0) {
+          setCyclingWord(cyclingWord.slice(0, currentLength));
+          currentLength--;
+        } else {
           clearInterval(timer);
-          // Move to next word
-          const nextIndex = (currentWordIndex + 1) % cyclingWords.length;
-          setCurrentWordIndex(nextIndex);
-          setIsUntyping(false);
+          // Move to next word and start typing again
+          setWordIndex((prev) => (prev + 1) % cyclingWords.length);
+          setStage('typing-word');
         }
-      }, speed / 3);
-      return () => clearInterval(timer);
-    } else {
-      // Type the new word
-      const targetWord = cyclingWords[currentWordIndex];
-      let index = 0;
-      const timer = setInterval(() => {
-        setCurrentCyclingWord(targetWord.slice(0, index));
-        index++;
-        if (index > targetWord.length) {
-          clearInterval(timer);
-          // Wait before untyping again
-          setTimeout(() => {
-            setIsUntyping(true);
-          }, 2500);
-        }
-      }, speed);
+      }, speed / 2);
       return () => clearInterval(timer);
     }
-  }, [text, cyclingWords, currentWordIndex, isInitialComplete, currentCyclingWord, isUntyping, speed]);
+  }, [text, cyclingWords, wordIndex, stage, baseText, cyclingWord, speed]);
 
   if (cyclingWords.length === 0) {
     return (
       <span className={className}>
-        {displayText}
-        <span className="animate-pulse text-green-500">|</span>
+        {baseText}
+        {baseText.length < text.length && <span className="animate-pulse text-green-500">|</span>}
       </span>
     );
   }
 
   return (
     <span className={className}>
-      {!isInitialComplete ? (
-        <>
-          {displayText}
-          <span className="animate-pulse text-green-500">|</span>
-        </>
-      ) : (
-        <>
-          {text}
-          <span className="text-green-500">{currentCyclingWord}</span>
-          <span className="animate-pulse text-green-500">|</span>
-        </>
-      )}
+      {baseText}
+      <span className="text-green-500">{cyclingWord}</span>
+      <span className="animate-pulse text-green-500">|</span>
     </span>
   );
 }
