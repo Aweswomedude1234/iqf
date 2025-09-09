@@ -15,26 +15,27 @@ export default function TypewriterText({
 }: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState('');
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [phase, setPhase] = useState('initial-typing'); // 'initial-typing' | 'cycling-untype' | 'cycling-type' | 'complete'
-  const [currentWord, setCurrentWord] = useState('');
+  const [isInitialTypingComplete, setIsInitialTypingComplete] = useState(false);
+  const [currentCyclingWord, setCurrentCyclingWord] = useState('');
+  const [isTypingWord, setIsTypingWord] = useState(true);
 
   useEffect(() => {
     if (cyclingWords.length === 0) {
-      // Simple behavior without cycling
+      // Original simple typing behavior
       let index = 0;
       const timer = setInterval(() => {
         setDisplayText(text.slice(0, index));
         index++;
         if (index > text.length) {
           clearInterval(timer);
-          setPhase('complete');
+          setIsInitialTypingComplete(true);
         }
       }, speed);
       return () => clearInterval(timer);
     }
 
-    if (phase === 'initial-typing') {
-      // Type the complete sentence with first word
+    if (!isInitialTypingComplete) {
+      // First time: type the complete sentence including first word
       let index = 0;
       const firstWord = cyclingWords[0];
       const fullText = text + firstWord;
@@ -44,71 +45,73 @@ export default function TypewriterText({
         index++;
         if (index > fullText.length) {
           clearInterval(timer);
-          setCurrentWord(firstWord);
-          // Pause then start cycling
+          setIsInitialTypingComplete(true);
+          setCurrentCyclingWord(firstWord);
+          // Start cycling after a pause, starting with the second word
           setTimeout(() => {
-            setPhase('cycling-untype');
-          }, 2000);
+            setCurrentWordIndex(1);
+            setIsTypingWord(false); // Start by untyping the first word
+          }, 2500);
         }
       }, speed);
       return () => clearInterval(timer);
+    } else {
+      // Cycling behavior: change only the last word
+      const currentWord = cyclingWords[currentWordIndex];
       
-    } else if (phase === 'cycling-untype') {
-      // Untype current word
-      let index = currentWord.length;
-      const timer = setInterval(() => {
-        setCurrentWord(currentWord.slice(0, index));
-        index--;
-        if (index < 0) {
-          clearInterval(timer);
-          // Move to next word and start typing
-          const nextIndex = (currentWordIndex + 1) % cyclingWords.length;
-          setCurrentWordIndex(nextIndex);
-          setPhase('cycling-type');
-        }
-      }, speed / 2);
-      return () => clearInterval(timer);
-      
-    } else if (phase === 'cycling-type') {
-      // Type new word
-      const newWord = cyclingWords[currentWordIndex];
-      let index = 0;
-      const timer = setInterval(() => {
-        setCurrentWord(newWord.slice(0, index));
-        index++;
-        if (index > newWord.length) {
-          clearInterval(timer);
-          // Pause then untype again
-          setTimeout(() => {
-            setPhase('cycling-untype');
-          }, 2000);
-        }
-      }, speed);
-      return () => clearInterval(timer);
+      if (isTypingWord) {
+        // Typing the new word
+        let index = 0;
+        const timer = setInterval(() => {
+          setCurrentCyclingWord(currentWord.slice(0, index));
+          index++;
+          if (index > currentWord.length) {
+            clearInterval(timer);
+            // Pause, then start untyping
+            setTimeout(() => {
+              setIsTypingWord(false);
+            }, 2500);
+          }
+        }, speed);
+        return () => clearInterval(timer);
+      } else {
+        // Untyping the current word
+        let index = currentCyclingWord.length;
+        const timer = setInterval(() => {
+          setCurrentCyclingWord(currentWord.slice(0, index));
+          index--;
+          if (index < 0) {
+            clearInterval(timer);
+            // Move to next word and start typing
+            setCurrentWordIndex((prev) => (prev + 1) % cyclingWords.length);
+            setIsTypingWord(true);
+          }
+        }, speed / 2);
+        return () => clearInterval(timer);
+      }
     }
-    
-  }, [text, cyclingWords, currentWordIndex, phase, currentWord, speed]);
+  }, [text, cyclingWords, currentWordIndex, isInitialTypingComplete, isTypingWord, speed]);
 
   if (cyclingWords.length === 0) {
     return (
       <span className={className}>
         {displayText}
-        {phase !== 'complete' && <span className="animate-pulse text-green-500">|</span>}
+        {!isInitialTypingComplete && <span className="animate-pulse text-green-500">|</span>}
       </span>
     );
   }
 
   return (
     <span className={className}>
-      {phase === 'initial-typing' ? (
+      {isInitialTypingComplete ? (
         <>
-          {displayText}
+          {text}
+          <span className="text-green-500">{currentCyclingWord}</span>
           <span className="animate-pulse text-green-500">|</span>
         </>
       ) : (
         <>
-          {text}
-          <span className="text-green-500">{currentWord}</span>
+          {displayText}
           <span className="animate-pulse text-green-500">|</span>
         </>
       )}
