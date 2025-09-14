@@ -147,7 +147,7 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedSection animationType="fade-in">
               <div className="text-center" data-testid="impact-students">
-                <div className="text-5xl font-bold text-accent mb-4">500+</div>
+                <div className="text-5xl font-bold text-accent mb-4">0</div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">Students Reached</h3>
                 <p className="text-muted-foreground">
                   Young learners have participated in our programs and workshops
@@ -157,7 +157,7 @@ export default function About() {
 
             <AnimatedSection animationType="fade-in">
               <div className="text-center" data-testid="impact-programs">
-                <div className="text-5xl font-bold text-accent mb-4">25+</div>
+                <div className="text-5xl font-bold text-accent mb-4">0</div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">Programs Offered</h3>
                 <p className="text-muted-foreground">
                   Diverse educational programs covering STEM, finance, chess, and more
@@ -167,7 +167,7 @@ export default function About() {
 
             <AnimatedSection animationType="fade-in">
               <div className="text-center" data-testid="impact-volunteers">
-                <div className="text-5xl font-bold text-accent mb-4">50+</div>
+                <div className="text-5xl font-bold text-accent mb-4">0</div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">Volunteers</h3>
                 <p className="text-muted-foreground">
                   Dedicated educators and mentors supporting our mission
