@@ -182,6 +182,7 @@ export default function Coding() {
       </section>
 
       {/* Student Projects */}
+      {/*
       <section className="bg-background py-20" data-testid="coding-projects-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
@@ -232,6 +233,7 @@ export default function Coding() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Join Section */}
       <section className="bg-accent py-20" data-testid="coding-join-section">

@@ -1,43 +1,53 @@
 import { useState, useMemo } from 'react';
-import { Search, Filter, Calendar, Clock, MapPin, Users } from 'lucide-react';
+import { Search, Filter } from 'lucide-react';
 import EventCard from '@/components/EventCard';
 import AnimatedSection from '@/components/AnimatedSection';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import type { Event } from '@shared/schema';
 
-// Static events (replace API)
+// 🔹 Helper: convert 24h time to 12h format
+function formatTime(time: string) {
+  const [hourStr, minuteStr] = time.split(':');
+  let hour = parseInt(hourStr, 10);
+  const minutes = parseInt(minuteStr, 10);
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  hour = hour % 12 || 12; // 0 → 12
+  return `${hour}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+}
+
+// 🔹 Static events (add category + Google Form links here)
 const staticEvents: Event[] = [
   {
     id: '1',
     title: 'Chess Workshop',
-    description: 'Join us for a fun chess event at the Delaware Library.',
+    description: 'Fun chess event at Delaware Library.',
     category: 'chess',
-    ageGroup: 'all',
+    ageGroup: 'kids',
     location: 'Delaware County District Library: Delaware Branch',
-    date: '2024-09-27',
-    time: '15:30', // 3:30 PM
+    date: '2025-09-27',
+    time: '15:30',
+    signupLink: 'https://forms.gle/your-signup-form',
+    volunteerLink: 'https://forms.gle/your-volunteer-form',
   },
   {
     id: '2',
-    title: 'Chess Workshop',
-    description: 'Another chess session at Liberty Branch.',
+    title: 'Chess workshop',
+    description: 'Fun chess event at Delaware County liberty Branch Library.',
     category: 'chess',
-    ageGroup: 'all',
-    location: 'Delaware County District Library: Liberty Branch',
-    date: '2024-10-04',
-    time: '15:00', // 3 PM
-  },
-  {
-    id: '3',
-    title: 'Chess Workshop',
-    description: 'Chess event at the Delaware Branch again!',
-    category: 'chess',
-    ageGroup: 'all',
-    location: 'Delaware County District Library: Delaware Branch',
-    date: '2024-10-11',
-    time: '14:00', // 2 PM
+    ageGroup: 'kids',
+    location: 'Liberty Branch',
+    date: '2025-10-04',
+    time: '09:00',
+    signupLink: 'https://forms.gle/your-signup-form',
+    volunteerLink: 'https://forms.gle/your-volunteer-form',
   },
 ];
 
@@ -47,15 +57,15 @@ export default function Events() {
   const [selectedAgeGroup, setSelectedAgeGroup] = useState('all');
   const [selectedLocation, setSelectedLocation] = useState('all');
   const [selectedTime, setSelectedTime] = useState('all');
-  const [selectedDateRange, setSelectedDateRange] = useState('all');
+  const [dateStart, setDateStart] = useState('');
+  const [dateEnd, setDateEnd] = useState('');
   const [showFilters, setShowFilters] = useState(false);
 
-  // Instead of fetching from API, use static events
   const events = staticEvents;
 
-  // Filtering logic (same as before)
+  // Filtering logic
   const filteredEvents = useMemo(() => {
-    return events.filter(event => {
+    return events.filter((event) => {
       const matchesSearch =
         searchQuery === '' ||
         event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -71,27 +81,21 @@ export default function Events() {
         event.ageGroup.toLowerCase() === selectedAgeGroup.toLowerCase();
 
       const matchesLocation =
-        selectedLocation === 'all' ||
-        event.location.toLowerCase().includes(selectedLocation.toLowerCase());
+        selectedLocation === 'all' || event.location === selectedLocation;
 
+      // 🔹 Time ranges
       const eventTime = new Date(`1970-01-01T${event.time}`).getHours();
       const matchesTime =
         selectedTime === 'all' ||
-        (selectedTime === 'morning' && eventTime < 12) ||
-        (selectedTime === 'afternoon' && eventTime >= 12 && eventTime < 18) ||
-        (selectedTime === 'evening' && eventTime >= 18);
+        (selectedTime === 'morning' && eventTime >= 7 && eventTime < 12) ||
+        (selectedTime === 'afternoon' && eventTime >= 12 && eventTime < 17) ||
+        (selectedTime === 'evening' && eventTime >= 17 && eventTime < 20);
 
+      // 🔹 Date range filter
       const eventDate = new Date(event.date);
-      const today = new Date();
-      const matchesDateRange =
-        selectedDateRange === 'all' ||
-        (selectedDateRange === 'this-week' &&
-          eventDate >= today &&
-          eventDate <= new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000)) ||
-        (selectedDateRange === 'this-month' &&
-          eventDate.getMonth() === today.getMonth() &&
-          eventDate.getFullYear() === today.getFullYear()) ||
-        (selectedDateRange === 'upcoming' && eventDate >= today);
+      const matchesDate =
+        (!dateStart || eventDate >= new Date(dateStart)) &&
+        (!dateEnd || eventDate <= new Date(dateEnd));
 
       return (
         matchesSearch &&
@@ -99,7 +103,7 @@ export default function Events() {
         matchesAgeGroup &&
         matchesLocation &&
         matchesTime &&
-        matchesDateRange
+        matchesDate
       );
     });
   }, [
@@ -109,16 +113,9 @@ export default function Events() {
     selectedAgeGroup,
     selectedLocation,
     selectedTime,
-    selectedDateRange,
+    dateStart,
+    dateEnd,
   ]);
-
-  const handleSignUp = (eventId: string) => {
-    alert(`Sign up for event ${eventId} - Registration form would open here`);
-  };
-
-  const handleVolunteer = (eventId: string) => {
-    alert(`Volunteer for event ${eventId} - Volunteer form would open here`);
-  };
 
   const clearAllFilters = () => {
     setSearchQuery('');
@@ -126,55 +123,149 @@ export default function Events() {
     setSelectedAgeGroup('all');
     setSelectedLocation('all');
     setSelectedTime('all');
-    setSelectedDateRange('all');
+    setDateStart('');
+    setDateEnd('');
   };
 
   return (
-    <div className="min-h-screen" data-testid="events-page">
-      {/* ... keep your Hero, Filters, and Grid the same ... */}
-      {/* Replace only the part that previously relied on error/loading */}
-      <section className="bg-background py-20" data-testid="events-grid-section">
+    <div className="min-h-screen">
+      {/* Search + Filters */}
+      <section className="bg-muted py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="relative flex-1 max-w-lg">
+              <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Search events..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+
+            <Button
+              variant="outline"
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center gap-2"
+            >
+              <Filter className="h-4 w-4" />
+              Filters
+            </Button>
+          </div>
+
+          {showFilters && (
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Category */}
+              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Categories</SelectItem>
+                  <SelectItem value="chess">Chess</SelectItem>
+                  <SelectItem value="robotics">Robotics</SelectItem>
+                  <SelectItem value="ai">AI</SelectItem>
+                  <SelectItem value="stem">STEM</SelectItem>
+                  <SelectItem value="competition">Competition</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Age Group */}
+              <Select value={selectedAgeGroup} onValueChange={setSelectedAgeGroup}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Age Group" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Ages</SelectItem>
+                  <SelectItem value="kids">Kids</SelectItem>
+                  <SelectItem value="teens">Teens</SelectItem>
+                  <SelectItem value="adults">Adults</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Location */}
+              <Select value={selectedLocation} onValueChange={setSelectedLocation}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Location" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Locations</SelectItem>
+                  <SelectItem value="Delaware County District Library: Delaware Branch">
+                    Delaware Branch
+                  </SelectItem>
+                  <SelectItem value="Delaware County District Library: Liberty Branch">
+                    Liberty Branch
+                  </SelectItem>
+                  <SelectItem value="Dublin Metropolitan Library">
+                    Dublin Metropolitan Library
+                  </SelectItem>
+                  <SelectItem value="Hilliard Library">Hilliard Library</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Time */}
+              <Select value={selectedTime} onValueChange={setSelectedTime}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Time" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Any Time</SelectItem>
+                  <SelectItem value="morning">Morning (7AM–12PM)</SelectItem>
+                  <SelectItem value="afternoon">Afternoon (12PM–5PM)</SelectItem>
+                  <SelectItem value="evening">Evening (5PM–8PM)</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Date Range */}
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium">Start Date</label>
+                <Input
+                  type="date"
+                  value={dateStart}
+                  onChange={(e) => setDateStart(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium">End Date</label>
+                <Input
+                  type="date"
+                  value={dateEnd}
+                  onChange={(e) => setDateEnd(e.target.value)}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Events Grid */}
+      <section className="bg-background py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredEvents.length > 0 ? (
             <AnimatedSection>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredEvents.map(event => (
+                {filteredEvents.map((event) => (
                   <EventCard
                     key={event.id}
-                    event={event}
-                    onSignUp={handleSignUp}
-                    onVolunteer={handleVolunteer}
+                    event={{
+                      ...event,
+                      time: formatTime(event.time), // show in 12h format
+                    }}
+                    onSignUp={() => (window.location.href = event.signupLink)}
+                    onVolunteer={() => (window.location.href = event.volunteerLink)}
                   />
                 ))}
               </div>
             </AnimatedSection>
           ) : (
-            <div className="text-center py-16" data-testid="no-events-found">
-              <h3 className="text-2xl font-bold text-foreground mb-4">No Events Found</h3>
+            <div className="text-center py-16">
+              <h3 className="text-2xl font-bold mb-4">No Events Found</h3>
               <p className="text-muted-foreground mb-6">
-                {searchQuery ||
-                selectedCategory !== 'all' ||
-                selectedAgeGroup !== 'all' ||
-                selectedLocation !== 'all' ||
-                selectedTime !== 'all' ||
-                selectedDateRange !== 'all'
-                  ? 'Try adjusting your search or filters to find more events.'
-                  : 'There are currently no events scheduled. Check back later for updates!'}
+                Try adjusting your search or filters to find more events.
               </p>
-              {(searchQuery ||
-                selectedCategory !== 'all' ||
-                selectedAgeGroup !== 'all' ||
-                selectedLocation !== 'all' ||
-                selectedTime !== 'all' ||
-                selectedDateRange !== 'all') && (
-                <Button
-                  onClick={clearAllFilters}
-                  className="btn-primary"
-                  data-testid="button-clear-all-filters"
-                >
-                  Clear All Filters
-                </Button>
-              )}
+              <Button onClick={clearAllFilters}>Clear All Filters</Button>
             </div>
           )}
         </div>

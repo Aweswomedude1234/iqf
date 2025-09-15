@@ -45,7 +45,7 @@ export default function HighSchool() {
             
             <AnimatedSection animationType="slide-in-right">
               <img
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800"
                 alt="High school students in advanced study session"
                 className="rounded-xl shadow-2xl w-full h-auto"
                 data-testid="img-high-school-overview"
@@ -148,7 +148,9 @@ export default function HighSchool() {
       </section>
 
       {/* College Outcomes */}
+      
       <section className="bg-background py-20" data-testid="high-school-outcomes-section">
+        {/*
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4" data-testid="text-outcomes-title">
@@ -193,7 +195,9 @@ export default function HighSchool() {
             </AnimatedSection>
           </div>
         </div>
+        */}
       </section>
+      
 
       {/* University Partners */}
       <section className="bg-accent py-20" data-testid="high-school-partners-section">

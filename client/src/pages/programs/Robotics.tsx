@@ -45,7 +45,7 @@ export default function Robotics() {
             
             <AnimatedSection animationType="slide-in-right">
               <img
-                src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800"
                 alt="Students working on robotics projects"
                 className="rounded-xl shadow-2xl w-full h-auto"
                 data-testid="img-robotics-overview"

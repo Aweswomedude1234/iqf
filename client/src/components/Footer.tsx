@@ -111,13 +111,14 @@ export default function Footer() {
                 <Mail className="h-4 w-4 mr-2" />
                 <span>info@iqfoundation.org</span>
               </div>
+              {/*
               <div className="flex items-center" data-testid="contact-phone">
                 <Phone className="h-4 w-4 mr-2" />
-                <span>(555) 123-4567</span>
-              </div>
+                 <span>(555) 123-4567</span> 
+              </div> */}
               <div className="flex items-center" data-testid="contact-address">
                 <MapPin className="h-4 w-4 mr-2" />
-                <span>123 Education St, Learning City</span>
+                <span>Dublin, Ohio</span>
               </div>
             </div>
           </div>
@@ -125,7 +126,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center">
           <p className="text-muted" data-testid="text-copyright">
-            &copy; 2024 IQ Foundation. All rights reserved. Empowering minds, building futures.
+            &copy; 2025 IQ Foundation. All rights reserved. Empowering minds, building futures.
           </p>
         </div>
       </div>

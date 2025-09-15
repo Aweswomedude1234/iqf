@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { UserPlus } from 'lucide-react';
 import TeamMember from '@/components/TeamMember';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -6,22 +5,31 @@ import { Button } from '@/components/ui/button';
 import type { TeamMember as TeamMemberType } from '@shared/schema';
 
 export default function Team() {
-  const { data: team, isLoading, error } = useQuery<TeamMemberType[]>({
-    queryKey: ['/api/team'],
-  });
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-background py-20" data-testid="team-error">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Error Loading Team</h1>
-          <p className="text-xl text-muted-foreground">
-            We're sorry, but we couldn't load the team information at this time. Please try again later.
-          </p>
-        </div>
-      </div>
-    );
-  }
+  // Static team members
+  const team: TeamMemberType[] = [
+    {
+      id: '1',
+      name: 'Nithilan Murugesan',
+      role: 'High School Junior',
+      image: 'https://via.placeholder.com/300x300.png?text=Nithilan',
+      bio: 'Passionate about STEM, AI, and empowering youth through education.',
+    },
+    {
+      id: '2',
+      name: 'Join our Team',
+      role: 'Future Team Member',
+      image: 'https://via.placeholder.com/300x300.png?text=Jane',
+      bio: 'Be part of something bigger and help shape the future of education.',
+    },
+    {
+      id: '3',
+      name: 'Join our Team',
+      role: 'Future Team Member',
+      image: 'https://via.placeholder.com/300x300.png?text=John',
+      bio: 'We are always looking for passionate educators and volunteers to join our mission.',
+    },
+    // You can add more static members here
+  ];
 
   return (
     <div className="min-h-screen" data-testid="team-page">
@@ -42,67 +50,40 @@ export default function Team() {
       {/* Team Members */}
       <section className="bg-secondary py-20" data-testid="team-members-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {isLoading ? (
+          <AnimatedSection>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="text-center animate-pulse" data-testid={`skeleton-team-${i}`}>
-                  <div className="w-48 h-48 bg-muted rounded-full mx-auto mb-6"></div>
-                  <div className="h-6 bg-muted rounded mb-2 max-w-32 mx-auto"></div>
-                  <div className="h-4 bg-muted rounded mb-3 max-w-24 mx-auto"></div>
-                  <div className="h-16 bg-muted rounded max-w-64 mx-auto"></div>
-                </div>
+              {team.map(member => (
+                <TeamMember key={member.id} member={member} />
               ))}
-            </div>
-          ) : team && team.length > 0 ? (
-            <AnimatedSection>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {team.map(member => (
-                  <TeamMember key={member.id} member={member} />
-                ))}
-                
-                {/* Future Team Member Placeholders */}
-                <div className="text-center" data-testid="join-team-placeholder-1">
-                  <div className="relative mb-6">
-                    <div className="w-48 h-48 bg-muted rounded-full mx-auto shadow-lg flex items-center justify-center">
-                      <UserPlus className="h-12 w-12 text-muted-foreground" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Join Our Team</h3>
-                  <p className="text-muted-foreground font-semibold mb-3">Future Team Member</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    We're always looking for passionate educators and volunteers to join our mission.
-                  </p>
-                </div>
 
-                <div className="text-center" data-testid="join-team-placeholder-2">
-                  <div className="relative mb-6">
-                    <div className="w-48 h-48 bg-muted rounded-full mx-auto shadow-lg flex items-center justify-center">
-                      <UserPlus className="h-12 w-12 text-muted-foreground" />
-                    </div>
+              {/* Future Team Member Placeholders */}
+              <div className="text-center" data-testid="join-team-placeholder-1">
+                <div className="relative mb-6">
+                  <div className="w-48 h-48 bg-muted rounded-full mx-auto shadow-lg flex items-center justify-center">
+                    <UserPlus className="h-12 w-12 text-muted-foreground" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Join Our Team</h3>
-                  <p className="text-muted-foreground font-semibold mb-3">Future Team Member</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Be part of something bigger and help shape the future of education.
-                  </p>
                 </div>
-              </div>
-            </AnimatedSection>
-          ) : (
-            <AnimatedSection className="text-center">
-              <div className="bg-card rounded-xl p-12" data-testid="no-team-message">
-                <div className="text-6xl text-muted-foreground mb-6">👥</div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Building Our Team</h3>
-                <p className="text-muted-foreground mb-6">
-                  We're in the process of building an amazing team of educators, mentors, and change-makers. 
-                  If you're passionate about education and want to make a difference, we'd love to hear from you.
+                <h3 className="text-xl font-bold text-foreground mb-2">Join Our Team</h3>
+                <p className="text-muted-foreground font-semibold mb-3">Future Team Member</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  We're always looking for passionate educators and volunteers to join our mission.
                 </p>
-                <Button className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg" data-testid="button-join-team">
-                  Join Our Team
-                </Button>
               </div>
-            </AnimatedSection>
-          )}
+
+              <div className="text-center" data-testid="join-team-placeholder-2">
+                <div className="relative mb-6">
+                  <div className="w-48 h-48 bg-muted rounded-full mx-auto shadow-lg flex items-center justify-center">
+                    <UserPlus className="h-12 w-12 text-muted-foreground" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Join Our Team</h3>
+                <p className="text-muted-foreground font-semibold mb-3">Future Team Member</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Be part of something bigger and help shape the future of education.
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

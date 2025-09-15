@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 export default function OurChapters() {
   const chapters = [
-    {
+   /* {
       name: "San Francisco Bay Area",
       location: "San Francisco, CA",
       members: 45,
@@ -31,6 +31,7 @@ export default function OurChapters() {
       programs: ["Chess Strategy", "Coding", "AI Introduction"],
       contact: "boston@iqfoundation.org"
     }
+      */
   ];
 
   return (

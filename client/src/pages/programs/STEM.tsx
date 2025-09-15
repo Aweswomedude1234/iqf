@@ -162,9 +162,12 @@ export default function STEM() {
       </section>
 
       {/* Success Stories */}
+      {/*
       <section className="bg-background py-20" data-testid="stem-success-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           <AnimatedSection className="text-center mb-16">
+           
             <h2 className="text-4xl font-bold text-foreground mb-4" data-testid="text-success-title">
               Student Achievements
             </h2>
@@ -200,6 +203,7 @@ export default function STEM() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Join Section */}
       <section className="bg-accent py-20" data-testid="stem-join-section">

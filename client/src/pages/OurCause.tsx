@@ -152,25 +152,25 @@ export default function OurCause() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="bg-background rounded-xl p-6" data-testid="goal-students">
-                <div className="text-4xl font-bold text-accent mb-2">1,000+</div>
+                <div className="text-4xl font-bold text-accent mb-2">0</div>
                 <div className="text-foreground font-semibold mb-2">Students Reached</div>
                 <div className="text-muted-foreground text-sm">by end of 2025</div>
               </div>
 
               <div className="bg-background rounded-xl p-6" data-testid="goal-programs">
-                <div className="text-4xl font-bold text-accent mb-2">50+</div>
+                <div className="text-4xl font-bold text-accent mb-2">0</div>
                 <div className="text-foreground font-semibold mb-2">Program Offerings</div>
                 <div className="text-muted-foreground text-sm">across all subjects</div>
               </div>
 
               <div className="bg-background rounded-xl p-6" data-testid="goal-volunteers">
-                <div className="text-4xl font-bold text-accent mb-2">100+</div>
+                <div className="text-4xl font-bold text-accent mb-2">0</div>
                 <div className="text-foreground font-semibold mb-2">Active Volunteers</div>
                 <div className="text-muted-foreground text-sm">supporting our mission</div>
               </div>
 
               <div className="bg-background rounded-xl p-6" data-testid="goal-partnerships">
-                <div className="text-4xl font-bold text-accent mb-2">25+</div>
+                <div className="text-4xl font-bold text-accent mb-2">0</div>
                 <div className="text-foreground font-semibold mb-2">Partner Organizations</div>
                 <div className="text-muted-foreground text-sm">amplifying our reach</div>
               </div>

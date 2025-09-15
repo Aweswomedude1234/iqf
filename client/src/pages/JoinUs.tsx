@@ -209,6 +209,7 @@ export default function JoinUs() {
       </section>
 
       {/* Contact Information */}
+      {/*
       <section className="bg-accent py-20" data-testid="contact-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
@@ -259,6 +260,9 @@ export default function JoinUs() {
           </AnimatedSection>
         </div>
       </section>
+      */}
     </div>
+    
   );
+  
 }

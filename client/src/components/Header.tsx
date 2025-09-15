@@ -37,7 +37,6 @@ export default function Header() {
   const joinUsDropdownItems = [
     { href: '/join-us#join', label: 'Join Us' },
     { href: '/volunteer', label: 'Volunteer' },
-    { href: '/join-us#team', label: 'Join Our Team' },
     { href: '/join-us#sponsor', label: 'Sponsor' },
     { href: '/join-us#partner', label: 'Partner With Us' },
     { href: '/join-us#chapter', label: 'Make a Chapter' },
@@ -105,7 +104,7 @@ export default function Header() {
             <Link href="/" data-testid="link-home">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/attached_assets/Gemini_Generated_Image_lyaeaxlyaeaxlyae_1757373997698.png"
+                  src="http://localhost:5173/iqfweb/client/src/components/test.png"
                   alt="IQ Foundation Logo"
                   className="h-10 w-10 rounded-full"
                 />

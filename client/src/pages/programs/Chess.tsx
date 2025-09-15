@@ -126,7 +126,7 @@ export default function Chess() {
                   <li>• Fundamental endgames</li>
                   <li>• Chess etiquette and notation</li>
                 </ul>
-                <div className="text-accent font-semibold">Ages 6-12</div>
+                <div className="text-accent font-semibold">Pawn</div>
               </div>
             </AnimatedSection>
 
@@ -140,7 +140,7 @@ export default function Chess() {
                   <li>• Complex endgame studies</li>
                   <li>• Tournament preparation</li>
                 </ul>
-                <div className="text-accent font-semibold">Ages 10-16</div>
+                <div className="text-accent font-semibold">Rook</div>
               </div>
             </AnimatedSection>
 
@@ -154,7 +154,7 @@ export default function Chess() {
                   <li>• Competition psychology</li>
                   <li>• Analysis techniques</li>
                 </ul>
-                <div className="text-accent font-semibold">Ages 12+</div>
+                <div className="text-accent font-semibold">King</div>
               </div>
             </AnimatedSection>
           </div>

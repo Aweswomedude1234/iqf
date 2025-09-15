@@ -104,8 +104,10 @@ export default function AI() {
       </section>
 
       {/* Projects Showcase */}
+      
       <section className="bg-secondary py-20" data-testid="ai-projects-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/*
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4" data-testid="text-projects-title">
               Student Projects
@@ -114,6 +116,7 @@ export default function AI() {
               Amazing AI applications built by our students
             </p>
           </AnimatedSection>
+          
 
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedSection animationType="slide-in-left">
@@ -151,7 +154,9 @@ export default function AI() {
                 </div>
               </div>
             </AnimatedSection>
+            
           </div>
+          */}
         </div>
       </section>
 

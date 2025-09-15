@@ -25,6 +25,7 @@ interface VolunteerOpportunity {
 }
 
 const volunteerOpportunities: VolunteerOpportunity[] = [
+  
   {
     id: "1",
     title: "AI Programming Mentor",
