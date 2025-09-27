@@ -15,21 +15,26 @@ export default function Footer() {
               Empowering young minds through innovative education and hands-on learning experiences.
             </p>
             <div className="flex space-x-4">
+              {/*
               <a href="#" className="text-muted hover:text-accent transition-colors" data-testid="link-facebook">
                 <Facebook className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted hover:text-accent transition-colors" data-testid="link-twitter">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted hover:text-accent transition-colors" data-testid="link-instagram">
+              */}
+              <a href="https://www.instagram.com/iqfoundationofficial/" className="text-muted hover:text-accent transition-colors" data-testid="link-instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted hover:text-accent transition-colors" data-testid="link-linkedin">
+              <a href="https://www.linkedin.com/company/iq-foundation/about" className="text-muted hover:text-accent transition-colors" data-testid="link-linkedin">
                 <Linkedin className="h-5 w-5" />
               </a>
+             {/*
               <a href="#" className="text-muted hover:text-accent transition-colors" data-testid="link-youtube">
                 <Youtube className="h-5 w-5" />
+                
               </a>
+              */}
             </div>
           </div>
 
@@ -104,6 +109,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
+          {/*
           <div>
             <h4 className="font-semibold mb-4" data-testid="text-contact-title">Contact</h4>
             <div className="space-y-2 text-muted">
@@ -115,13 +121,14 @@ export default function Footer() {
               <div className="flex items-center" data-testid="contact-phone">
                 <Phone className="h-4 w-4 mr-2" />
                  <span>(555) 123-4567</span> 
-              </div> */}
+              </div> 
               <div className="flex items-center" data-testid="contact-address">
                 <MapPin className="h-4 w-4 mr-2" />
                 <span>Dublin, Ohio</span>
               </div>
             </div>
           </div>
+          */}
         </div>
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center">

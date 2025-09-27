@@ -32,12 +32,12 @@ const staticEvents: Event[] = [
     category: 'chess',
     ageGroup: 'kids',
     location: 'Delaware County District Library: Delaware Branch',
-    date: '2025-09-27',
-    time: '15:30',
-    signupLink: 'https://forms.gle/your-signup-form',
-    volunteerLink: 'https://forms.gle/your-volunteer-form',
+    date: '2025-10-11',
+    time: '02:00',
+    signupLink: 'https://forms.gle/vGmpkv2wDsxnqsvj9',
+    volunteerLink: 'https://www.signupgenius.com/go/10C0545AFAA22A2FCCF8-59027462-october',
   },
-  {
+  /*
     id: '2',
     title: 'Chess workshop',
     description: 'Fun chess event at Delaware County liberty Branch Library.',
@@ -49,6 +49,7 @@ const staticEvents: Event[] = [
     signupLink: 'https://forms.gle/your-signup-form',
     volunteerLink: 'https://forms.gle/your-volunteer-form',
   },
+  */
 ];
 
 export default function Events() {

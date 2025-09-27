@@ -48,7 +48,7 @@ export default function TypewriterText({
   return (
     <span className={className}>
       {text}
-      <span style={{ color: "#16A34A" }}>{displayedText}</span>
+      <span style={{ color: "#0d7ff6" }}>{displayedText}</span>
       <span className="blinking-cursor">|</span>
     </span>
   );

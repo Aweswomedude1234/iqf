@@ -115,7 +115,7 @@ export default function Robotics() {
             </p>
             <div className="space-x-4">
               <a 
-                href="/join-us#join"
+                href="https://forms.gle/uvsUVN7YNixGWX1K8"
                 className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block"
                 data-testid="button-join-team"
               >

@@ -1,34 +1,34 @@
 import { UserPlus } from 'lucide-react';
 import TeamMember from '@/components/TeamMember';
 import AnimatedSection from '@/components/AnimatedSection';
-import { Button } from '@/components/ui/button';
 import type { TeamMember as TeamMemberType } from '@shared/schema';
 
 export default function Team() {
-  // Static team members
   const team: TeamMemberType[] = [
     {
       id: '1',
       name: 'Nithilan Murugesan',
-      role: 'High School Junior',
-      image: 'https://via.placeholder.com/300x300.png?text=Nithilan',
+      title: 'High School Junior',
+      imageUrl: '/IMG_5271.jpg', // ✅ served from client/public
       bio: 'Passionate about STEM, AI, and empowering youth through education.',
+      isFounder: 'true',
     },
     {
       id: '2',
-      name: 'Join our Team',
-      role: 'Future Team Member',
-      image: 'https://via.placeholder.com/300x300.png?text=Jane',
+      name: 'Open position',
+      title: 'Future Team Member',
+      imageUrl: '/officialiqf.png', // ✅ replace with your own image in /public
       bio: 'Be part of something bigger and help shape the future of education.',
+      isFounder: 'false',
     },
     {
       id: '3',
-      name: 'Join our Team',
-      role: 'Future Team Member',
-      image: 'https://via.placeholder.com/300x300.png?text=John',
+      name: 'Open position',
+      title: 'Future Team Member',
+      imageUrl: '/officialiqf.png', // ✅ replace with your own image in /public
       bio: 'We are always looking for passionate educators and volunteers to join our mission.',
-    },
-    // You can add more static members here
+      isFounder: 'false',
+    }, 
   ];
 
   return (
@@ -52,7 +52,7 @@ export default function Team() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {team.map(member => (
+              {team.map((member) => (
                 <TeamMember key={member.id} member={member} />
               ))}
 
@@ -95,22 +95,13 @@ export default function Team() {
               Want to Join Our Team?
             </h2>
             <p className="text-xl text-foreground mb-8 max-w-3xl mx-auto" data-testid="text-team-cta-subtitle">
-              We're always looking for passionate individuals who share our vision of transforming education. 
-              Whether you're an educator, mentor, or someone who wants to make a difference, there's a place for you on our team.
+              We're always looking for passionate individuals who share our vision of transforming education. Whether you're an educator, mentor, or someone who wants to make a difference, there's a place for you on our team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/join-us" 
-                className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg"
-                data-testid="button-apply-team"
-              >
+              <a href="/join-us" className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg" data-testid="button-apply-team">
                 Apply to Join
               </a>
-              <a 
-                href="mailto:careers@iqfoundation.org" 
-                className="bg-background text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-colors"
-                data-testid="button-contact-careers"
-              >
+              <a href="mailto:careers@iqfoundation.org" className="bg-background text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-colors" data-testid="button-contact-careers">
                 Contact Us
               </a>
             </div>

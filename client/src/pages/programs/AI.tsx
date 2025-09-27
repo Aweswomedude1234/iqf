@@ -172,7 +172,7 @@ export default function AI() {
             </p>
             <div className="space-x-4">
               <a 
-                href="/join-us#join"
+                href="https://forms.gle/QojuMLca54x3EE5t8"
                 className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block"
                 data-testid="button-enroll-ai"
               >

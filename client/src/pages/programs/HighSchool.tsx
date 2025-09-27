@@ -25,16 +25,16 @@ export default function HighSchool() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection animationType="slide-in-left">
               <h2 className="text-4xl font-bold text-foreground mb-6" data-testid="text-overview-title">
-                College & Career Ready
+                Volunteering and Leadership
               </h2>
               <div className="space-y-6">
                 <div data-testid="focus-academic">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Academic Excellence</h3>
-                  <p className="text-muted-foreground">Advanced coursework in mathematics, sciences, and computer science to prepare for college-level studies.</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Get Volunteer Hours</h3>
+                  <p className="text-muted-foreground">Volunteer at our camps and programs to get certified volunteer hours.</p>
                 </div>
                 <div data-testid="focus-research">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Research Experience</h3>
-                  <p className="text-muted-foreground">Conduct original research projects with mentorship from industry professionals and university faculty.</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Give mentorship for students</h3>
+                  <p className="text-muted-foreground">Help mentor the next generation of minds, in many different programs across many fields, from AI to STEM and more.</p>
                 </div>
                 <div data-testid="focus-leadership">
                   <h3 className="text-xl font-semibold text-foreground mb-2">Leadership Development</h3>
@@ -56,6 +56,7 @@ export default function HighSchool() {
       </section>
 
       {/* Core Programs */}
+      {/*
       <section className="bg-background py-20" data-testid="high-school-programs-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
@@ -102,8 +103,10 @@ export default function HighSchool() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Subject Areas */}
+      {/*
       <section className="bg-secondary py-20" data-testid="high-school-subjects-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
@@ -134,7 +137,7 @@ export default function HighSchool() {
               <div className="bg-background rounded-xl p-8" data-testid="subjects-right">
                 <h3 className="text-2xl font-bold text-foreground mb-6">Technology & Engineering</h3>
                 <ul className="space-y-3 text-muted-foreground">
-                  <li>• Computer Science A (AP CS A)</li>
+                  <li>• Computer Science ()</li>
                   <li>• Computer Science Principles (AP CSP)</li>
                   <li>• Data Structures & Algorithms</li>
                   <li>• Web Development & Design</li>
@@ -146,7 +149,7 @@ export default function HighSchool() {
           </div>
         </div>
       </section>
-
+        */}
       {/* College Outcomes */}
       
       <section className="bg-background py-20" data-testid="high-school-outcomes-section">
@@ -204,43 +207,50 @@ export default function HighSchool() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-12">
             <h2 className="text-4xl font-bold text-foreground mb-6" data-testid="text-partners-title">
-              University Partnerships
+              Want to join us?
             </h2>
             <p className="text-xl text-foreground mb-8 max-w-3xl mx-auto" data-testid="text-partners-subtitle">
-              Direct pathways to top universities through our partnership programs
+              Make a real impact with an educational nonprofit to transform many lives.
             </p>
             
             <div className="bg-background rounded-xl p-8 max-w-4xl mx-auto" data-testid="partners-info">
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div data-testid="partner-benefit-1">
-                  <h3 className="font-semibold text-foreground mb-2">Guaranteed Interviews</h3>
-                  <p className="text-muted-foreground text-sm">Priority consideration for admission at partner universities</p>
+                  <h3 className="font-semibold text-foreground mb-2">Certified hours</h3>
+                  <p className="text-muted-foreground text-sm">Get certified volunteer hours</p>
                 </div>
                 <div data-testid="partner-benefit-2">
-                  <h3 className="font-semibold text-foreground mb-2">College Credits</h3>
-                  <p className="text-muted-foreground text-sm">Earn college credits through dual enrollment programs</p>
+                  <h3 className="font-semibold text-foreground mb-2">Gain experience</h3>
+                  <p className="text-muted-foreground text-sm">Gain experience mentoring others and teaching others</p>
                 </div>
                 <div data-testid="partner-benefit-3">
-                  <h3 className="font-semibold text-foreground mb-2">Research Opportunities</h3>
-                  <p className="text-muted-foreground text-sm">Access to university labs and research facilities</p>
+                  <h3 className="font-semibold text-foreground mb-2">Make an impact</h3>
+                  <p className="text-muted-foreground text-sm">Make a real life impact in Dublin, Ohio</p>
                 </div>
               </div>
             </div>
 
             <div className="space-x-4 mt-8">
               <a 
-                href="/join-us#join"
+                href="https://forms.gle/dqVfByytTYocKpoG7"
                 className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block"
                 data-testid="button-apply-program"
               >
-                Apply Now
+                Register Now
               </a>
               <a 
                 href="/events"
                 className="bg-background text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-colors inline-block"
                 data-testid="button-info-session"
               >
-                Info Sessions
+                Upcoming events
+              </a>
+              <a 
+                href="/volunteer"
+                className="bg-background text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-colors inline-block"
+                data-testid="button-info-session"
+              >
+                Volunteer roles
               </a>
             </div>
           </AnimatedSection>

@@ -10,7 +10,7 @@ export default function Chess() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-8" data-testid="text-chess-hero-title">
-              Chess Club
+              Kings Academy of Chess 
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-chess-hero-subtitle">
               Develop strategic thinking and critical analysis skills through the royal game of chess. From beginners to advanced players, everyone is welcome.
@@ -190,11 +190,11 @@ export default function Chess() {
 
             <div className="space-x-4">
               <a 
-                href="/join-us#join"
+                href="https://forms.gle/5cN4sPqx5Xbm2wkQA"
                 className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block"
                 data-testid="button-join-chess"
               >
-                Join Chess Club
+                Join Kings Academy
               </a>
               <a 
                 href="/events"

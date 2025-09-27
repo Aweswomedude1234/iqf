@@ -10,10 +10,10 @@ export default function Coding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-8" data-testid="text-coding-hero-title">
-              Coding Bootcamp
+              CodeStation
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-coding-hero-subtitle">
-              Learn programming languages and software development from the ground up. Build real applications and prepare for a career in technology.
+              Learn programming languages and software development from the ground up. Build real applications and learn the basics.
             </p>
           </AnimatedSection>
         </div>
@@ -25,7 +25,7 @@ export default function Coding() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection animationType="slide-in-left">
               <h2 className="text-4xl font-bold text-foreground mb-6" data-testid="text-overview-title">
-                From Beginner to Developer
+                From Beginner to Coder
               </h2>
               <div className="space-y-6">
                 <div data-testid="skill-fundamentals">
@@ -33,12 +33,12 @@ export default function Coding() {
                   <p className="text-muted-foreground">Master the core concepts of programming including variables, functions, loops, and data structures.</p>
                 </div>
                 <div data-testid="skill-languages">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Multiple Languages</h3>
-                  <p className="text-muted-foreground">Learn popular programming languages including Python, JavaScript, Java, and more.</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Make projects</h3>
+                  <p className="text-muted-foreground">Create apps, webites and more using the knowledge gained during the program</p>
                 </div>
                 <div data-testid="skill-projects">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Real-World Projects</h3>
-                  <p className="text-muted-foreground">Build a portfolio of applications including websites, mobile apps, and software tools.</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Impact</h3>
+                  <p className="text-muted-foreground">Learn how to make an impact through coding and build problem solving skills.</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -60,7 +60,7 @@ export default function Coding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4" data-testid="text-tracks-title">
-              Specialized Learning Tracks
+              What we'll cover
             </h2>
             <p className="text-xl text-muted-foreground" data-testid="text-tracks-subtitle">
               Choose your path in the world of programming
@@ -124,6 +124,8 @@ export default function Coding() {
       </section>
 
       {/* Course Structure */}
+      {/*
+      
       <section className="bg-secondary py-20" data-testid="coding-structure-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
@@ -180,7 +182,7 @@ export default function Coding() {
           </div>
         </div>
       </section>
-
+        */}
       {/* Student Projects */}
       {/*
       <section className="bg-background py-20" data-testid="coding-projects-section">
@@ -247,18 +249,18 @@ export default function Coding() {
             </p>
             <div className="space-x-4">
               <a 
-                href="/join-us#join"
+                href="https://forms.gle/DsKACsJcL89fUNj39"
                 className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block"
                 data-testid="button-enroll-coding"
               >
-                Enroll Today
+                Register here
               </a>
               <a 
                 href="/events"
                 className="bg-background text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-colors inline-block"
                 data-testid="button-free-workshop"
               >
-                Free Workshop
+                Upcoming events
               </a>
             </div>
           </AnimatedSection>

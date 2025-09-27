@@ -1,4 +1,4 @@
-import { GraduationCap, HandHeart, Users, Heart, Handshake, Mail, Phone, MapPin } from 'lucide-react';
+import { GraduationCap, HandHeart, Users, Heart, Handshake, MapPin } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import { Button } from '@/components/ui/button';
 
@@ -15,7 +15,8 @@ export default function JoinUs() {
         "Certificate of completion",
         "Community of like-minded learners"
       ],
-      action: "Enroll Now",
+      action: "Upcoming events",
+      link: "/Events",
       color: "bg-blue-50"
     },
     {
@@ -29,10 +30,12 @@ export default function JoinUs() {
         "Professional networking",
         "Personal fulfillment"
       ],
-      action: "Apply to Volunteer",
+      action: "Event volunteers",
+      link: "/events",
       color: "bg-green-50"
     },
-    {
+    
+    /*{
       icon: Users,
       title: "Join Our Team",
       description: "Build the future of education with us as a full-time or part-time team member.",
@@ -44,6 +47,7 @@ export default function JoinUs() {
         "Make a lasting impact"
       ],
       action: "View Openings",
+      link: "https://forms.gle/your-team-form",
       color: "bg-purple-50"
     },
     {
@@ -58,6 +62,7 @@ export default function JoinUs() {
         "Corporate partnership options"
       ],
       action: "Become a Sponsor",
+      link: "https://forms.gle/your-sponsor-form",
       color: "bg-red-50"
     },
     {
@@ -72,6 +77,7 @@ export default function JoinUs() {
         "Community impact"
       ],
       action: "Explore Partnership",
+      link: "https://forms.gle/your-partner-form",
       color: "bg-orange-50"
     },
     {
@@ -86,14 +92,11 @@ export default function JoinUs() {
         "Community impact"
       ],
       action: "Start a Chapter",
+      link: "https://forms.gle/your-chapter-form",
       color: "bg-teal-50"
     }
+      */
   ];
-
-  const handleJoinOption = (option: string) => {
-    // TODO: Implement specific join option functionality
-    alert(`${option} - Contact form would open here`);
-  };
 
   return (
     <div className="min-h-screen" data-testid="join-us-page">
@@ -126,12 +129,7 @@ export default function JoinUs() {
                   animationType={isEven ? "slide-in-left" : "slide-in-right"}
                 >
                   <div 
-                    id={option.title === 'Join Us' ? 'join' : 
-                        option.title === 'Volunteer' ? 'volunteer' :
-                        option.title === 'Join Our Team' ? 'team' :
-                        option.title === 'Sponsor' ? 'sponsor' :
-                        option.title === 'Partner With Us' ? 'partner' :
-                        option.title === 'Make a Chapter' ? 'chapter' : ''}
+                    id={option.title.toLowerCase().replace(/\s+/g, '-')}
                     className={`grid lg:grid-cols-2 gap-8 items-center ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}
                     data-testid={`join-option-${index}`}
                   >
@@ -172,13 +170,32 @@ export default function JoinUs() {
                           </ul>
                         </div>
 
-                        <Button 
-                          className="btn-primary w-full py-3 rounded-lg font-semibold"
-                          onClick={() => handleJoinOption(option.title)}
-                          data-testid={`button-${option.title.toLowerCase().replace(/\s+/g, '-')}`}
-                        >
-                          {option.action}
-                        </Button>
+                        {/* Buttons */}
+                        {option.title === "Volunteer" ? (
+                          <div className="flex gap-4">
+                            <Button 
+                              className="btn-primary w-full py-3 rounded-lg font-semibold"
+                              onClick={() => window.open(option.link, "_blank")}
+                              data-testid={`button-${option.title.toLowerCase().replace(/\s+/g, '-')}`}
+                            >
+                              {option.action}
+                            </Button>
+                            <Button 
+                              className="btn-secondary w-full py-3 rounded-lg font-semibold"
+                              onClick={() => window.open("/volunteer", "_blank")}
+                            >
+                              Volunteer Positions
+                            </Button>
+                          </div>
+                        ) : (
+                          <Button 
+                            className="btn-primary w-full py-3 rounded-lg font-semibold"
+                            onClick={() => window.open(option.link, "_blank")}
+                            data-testid={`button-${option.title.toLowerCase().replace(/\s+/g, '-')}`}
+                          >
+                            {option.action}
+                          </Button>
+                        )}
                       </div>
                     </div>
 
@@ -186,14 +203,14 @@ export default function JoinUs() {
                       <img
                         src={
                           index === 0 
-                            ? "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                            ? "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&h=600"
                             : index === 1
-                            ? "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                            ? "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&h=600"
                             : index === 2
-                            ? "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                            ? "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&h=600"
                             : index === 3
-                            ? "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-                            : "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                            ? "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&w=800&h=600"
+                            : "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&h=600"
                         }
                         alt={`${option.title} illustration`}
                         className="rounded-xl shadow-lg w-full h-auto"
@@ -207,62 +224,6 @@ export default function JoinUs() {
           </div>
         </div>
       </section>
-
-      {/* Contact Information */}
-      {/*
-      <section className="bg-accent py-20" data-testid="contact-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center">
-            <h2 className="text-4xl font-bold text-foreground mb-6" data-testid="text-contact-title">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-foreground mb-12 max-w-3xl mx-auto" data-testid="text-contact-subtitle">
-              Have questions or want to learn more? We're here to help! Reach out to us through any of the channels below.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-background rounded-xl p-6 hover-lift" data-testid="contact-email-card">
-                <Mail className="h-8 w-8 text-accent mx-auto mb-4" />
-                <h3 className="font-bold text-foreground mb-2">Email Us</h3>
-                <p className="text-muted-foreground mb-4">Get in touch via email</p>
-                <a 
-                  href="mailto:info@iqfoundation.org" 
-                  className="text-accent font-medium hover:underline"
-                  data-testid="link-contact-email"
-                >
-                  info@iqfoundation.org
-                </a>
-              </div>
-
-              <div className="bg-background rounded-xl p-6 hover-lift" data-testid="contact-phone-card">
-                <Phone className="h-8 w-8 text-accent mx-auto mb-4" />
-                <h3 className="font-bold text-foreground mb-2">Call Us</h3>
-                <p className="text-muted-foreground mb-4">Speak with our team</p>
-                <a 
-                  href="tel:+15551234567" 
-                  className="text-accent font-medium hover:underline"
-                  data-testid="link-contact-phone"
-                >
-                  (555) 123-4567
-                </a>
-              </div>
-
-              <div className="bg-background rounded-xl p-6 hover-lift" data-testid="contact-address-card">
-                <MapPin className="h-8 w-8 text-accent mx-auto mb-4" />
-                <h3 className="font-bold text-foreground mb-2">Visit Us</h3>
-                <p className="text-muted-foreground mb-4">Our physical location</p>
-                <p className="text-accent font-medium" data-testid="text-contact-address">
-                  123 Education St<br />
-                  Learning City, LC 12345
-                </p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-      */}
     </div>
-    
   );
-  
 }

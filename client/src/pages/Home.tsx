@@ -33,10 +33,10 @@ export default function Home() {
                   text="Where curiosity meets "
                   cyclingWords={["innovation", "discovery", "exploration", "possibility", "imagination"]}
                   className="block"
-                  speed={80}
+                  speed={60}
                 />
               </div>
-              <p className="text-2xl md:text-4xl text-green-600 mt-4 font-semibold">
+              <p className="text-2xl md:text-4xl text-sky-500 mt-4 font-semibold">
                 Unlocking knowledge and creativity for learners everywhere.
               </p>
             </div>
@@ -57,7 +57,7 @@ export default function Home() {
       </section>
 
       {/* Upcoming Events Preview */}
-      <section className="bg-green-50 py-20" data-testid="events-preview-section">
+      <section className="bg-blue-50 py-20" data-testid="events-preview-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4" data-testid="text-events-title">
@@ -159,7 +159,7 @@ export default function Home() {
       </section>
 
       {/* About Us Preview */}
-      <section className="bg-green-50 py-20" data-testid="about-preview-section">
+      <section className="bg-blue-50 py-20" data-testid="about-preview-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection animationType="slide-in-left">
@@ -191,14 +191,14 @@ export default function Home() {
       </section>
 
       {/* Join Us Section */}
-      <section className="bg-green-700 py-20" data-testid="join-us-section">
+      <section className="bg-blue-700 py-20" data-testid="join-us-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <AnimatedSection>
               <h2 className="text-4xl font-bold text-white mb-6" data-testid="text-join-title">
                 Join Our Community
               </h2>
-              <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto" data-testid="text-join-subtitle">
+              <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto" data-testid="text-join-subtitle">
                 Be part of a movement that's transforming education and empowering young minds to reach their full potential.
               </p>
               
@@ -235,14 +235,14 @@ export default function Home() {
                     action: "Partner"
                   }
                 ].map((item, index) => (
-                  <div key={index} className="bg-white rounded-xl p-6 hover-lift border border-green-200" data-testid={`card-join-option-${index}`}>
-                    <div className="text-green-600 text-3xl mb-4">
+                  <div key={index} className="bg-white rounded-xl p-6 hover-lift border border-blue-200" data-testid={`card-join-option-${index}`}>
+                    <div className="text-blue-600 text-3xl mb-4">
                       <i className={item.icon}></i>
                     </div>
-                    <h3 className="font-bold text-green-800 mb-2" data-testid={`text-join-option-title-${index}`}>
+                    <h3 className="font-bold text-blue-800 mb-2" data-testid={`text-join-option-title-${index}`}>
                       {item.title}
                     </h3>
-                    <p className="text-green-600 text-sm mb-4" data-testid={`text-join-option-description-${index}`}>
+                    <p className="text-blue-600 text-sm mb-4" data-testid={`text-join-option-description-${index}`}>
                       {item.description}
                     </p>
                     <Link href={item.title === "Volunteer" ? "/volunteer" : "/join-us"}>

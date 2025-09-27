@@ -22,24 +22,26 @@ export default function Header() {
   const aboutDropdownItems = [
     { href: '/our-cause', label: 'Our Cause' },
     { href: '/team', label: 'Our Team' },
-    { href: '/our-chapters', label: 'Our Chapters' },
+    /*{ href: '/our-chapters', label: 'Our Chapters' },*/
   ];
 
   const programsDropdownItems = [
-    { href: '/programs/robotics', label: 'Robotics Team' },
-    { href: '/programs/ai', label: 'AI' },
-    { href: '/programs/chess', label: 'Chess' },
-    { href: '/programs/stem', label: 'STEM' },
-    { href: '/programs/high-school', label: 'High School' },
-    { href: '/programs/coding', label: 'Coding' },
+    { href: '/programs/robotics', label: 'FLL Robotics Team' },
+    { href: '/programs/ai', label: 'AI Academy' },
+    { href: '/programs/chess', label: 'Kings Academy of Chess' },
+    { href: '/programs/stem', label: 'STEM Lab' },
+    { href: '/programs/high-school', label: 'High School programs' },
+    { href: '/programs/coding', label: 'CodeStation' },
   ];
 
   const joinUsDropdownItems = [
     { href: '/join-us#join', label: 'Join Us' },
     { href: '/volunteer', label: 'Volunteer' },
+    /*
     { href: '/join-us#sponsor', label: 'Sponsor' },
     { href: '/join-us#partner', label: 'Partner With Us' },
     { href: '/join-us#chapter', label: 'Make a Chapter' },
+     */
   ];
 
   // Global search data
@@ -104,7 +106,7 @@ export default function Header() {
             <Link href="/" data-testid="link-home">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="http://localhost:5173/iqfweb/client/src/components/test.png"
+                  src="/officialiqf.png"
                   alt="IQ Foundation Logo"
                   className="h-10 w-10 rounded-full"
                 />
@@ -118,22 +120,22 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
             {/* Home */}
-            <Link href="/" className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors">
+            <Link href="/" className="nav-link text-foreground font-medium px-3 py-2 hover:text-blue-600 transition-colors">
               Home
             </Link>
 
             {/* About Us Dropdown */}
             <div className="relative group">
-              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors flex items-center">
+              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-blue-600 transition-colors flex items-center">
                 About Us
                 <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-green-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-blue-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="p-2">
                   {aboutDropdownItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
+                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-blue-50 hover:text-blue-700 rounded-md transition-colors">
                       {item.label}
                     </Link>
                   ))}
@@ -143,16 +145,16 @@ export default function Header() {
 
             {/* Our Programs Dropdown */}
             <div className="relative group">
-              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors flex items-center">
+              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-blue-600 transition-colors flex items-center">
                 Our Programs
                 <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-green-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-blue-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="p-2">
                   {programsDropdownItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
+                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-blue-50 hover:text-blue-700 rounded-md transition-colors">
                       {item.label}
                     </Link>
                   ))}
@@ -161,22 +163,22 @@ export default function Header() {
             </div>
 
             {/* Events */}
-            <Link href="/events" className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors">
+            <Link href="/events" className="nav-link text-foreground font-medium px-3 py-2 hover:text-blue-600 transition-colors">
               Events
             </Link>
 
             {/* Join Us Dropdown */}
             <div className="relative group">
-              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-green-600 transition-colors flex items-center">
+              <button className="nav-link text-foreground font-medium px-3 py-2 hover:text-blue-600 transition-colors flex items-center">
                 Join Us
                 <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-green-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-blue-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="p-2">
                   {joinUsDropdownItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-green-50 hover:text-green-700 rounded-md transition-colors">
+                    <Link key={item.href} href={item.href} className="block px-3 py-2 text-sm text-foreground hover:bg-blue-50 hover:text-blue-700 rounded-md transition-colors">
                       {item.label}
                     </Link>
                   ))}

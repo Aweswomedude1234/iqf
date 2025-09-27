@@ -10,7 +10,7 @@ export default function STEM() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-8" data-testid="text-stem-hero-title">
-              STEM Programs
+              STEM Lab
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-stem-hero-subtitle">
               Explore Science, Technology, Engineering, and Mathematics through hands-on experiments and real-world problem solving.
@@ -217,11 +217,11 @@ export default function STEM() {
             </p>
             <div className="space-x-4">
               <a 
-                href="/join-us#join"
+                href="https://forms.gle/EM78YE6t3p7T266k7"
                 className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-block"
                 data-testid="button-enroll-stem"
               >
-                Enroll Now
+                Register now
               </a>
               <a 
                 href="/events"
