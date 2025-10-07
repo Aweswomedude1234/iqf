@@ -19,10 +19,11 @@ export default function Footer() {
               <a href="#" className="text-muted hover:text-accent transition-colors" data-testid="link-facebook">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted hover:text-accent transition-colors" data-testid="link-twitter">
-                <Twitter className="h-5 w-5" />
-              </a>
               */}
+              <a href="mailto:info@theiqfoundation.org" className="text-muted hover:text-accent transition-colors" data-testid="link-mail">
+                <Mail className="h-5 w-5" />
+              </a>
+              
               <a href="https://www.instagram.com/iqfoundationofficial/" className="text-muted hover:text-accent transition-colors" data-testid="link-instagram">
                 <Instagram className="h-5 w-5" />
               </a>
@@ -109,26 +110,28 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          {/*
+          
           <div>
             <h4 className="font-semibold mb-4" data-testid="text-contact-title">Contact</h4>
             <div className="space-y-2 text-muted">
               <div className="flex items-center" data-testid="contact-email">
                 <Mail className="h-4 w-4 mr-2" />
-                <span>info@iqfoundation.org</span>
+                <span>info@theiqfoundation.org</span>
               </div>
+              
               {/*
               <div className="flex items-center" data-testid="contact-phone">
                 <Phone className="h-4 w-4 mr-2" />
                  <span>(555) 123-4567</span> 
               </div> 
+              */}
               <div className="flex items-center" data-testid="contact-address">
                 <MapPin className="h-4 w-4 mr-2" />
                 <span>Dublin, Ohio</span>
               </div>
             </div>
           </div>
-          */}
+          
         </div>
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center">
